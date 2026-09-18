@@ -1,0 +1,19 @@
+# AI Profit Flow — правила индексации
+# Если домен другой — замените Host и Sitemap на ваш URL.
+
+User-agent: *
+Allow: /
+Allow: /doc/privacy.html
+Allow: /doc/consent.html
+Disallow: /api/
+Disallow: /*.json$
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid
+
+Host: https://aiprofitflow.ru
+Sitemap: https://aiprofitflow.ru/sitemap.xml

@@ -1,0 +1,7 @@
+{
+  "name": "AI Profit Flow - Агентство Автоматизации",
+  "description": "AI Profit Flow — внедрение ИИ и автоматизация бизнеса: аудит процессов, HR, боты, аналитика продаж, интеграции с CRM. Умные технологии для роста прибыли.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

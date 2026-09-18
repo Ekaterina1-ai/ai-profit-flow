@@ -1,0 +1,464 @@
+import type { Messages } from '../types';
+
+const messages = {
+  nav: {
+    solutions: 'Soluções',
+    cases: 'Cases',
+    contacts: 'Contatos',
+    consultation: 'Consulta',
+    writeUs: 'Escreva para nós',
+    openMenu: 'Abrir menu',
+  },
+  hero: {
+    status: 'Sistemas de AI online · automação pronta',
+    titleLine1: 'TECNOLOGIAS INTELIGENTES',
+    titleLine2: 'PARA O SEU NEGÓCIO',
+    subtitle:
+      'Automatizamos rotinas, aumentamos vendas e economizamos seu tempo com soluções de IA personalizadas.',
+    cta: 'Saiba mais',
+  },
+  workBoost: {
+    titleBefore: 'Como simplificar o trabalho e',
+    titleAccent: 'reduzir custos',
+    titleAfter: 'com tecnologias inteligentes?',
+    card1Title: 'Livre-se das tarefas rotineiras',
+    card1Text:
+      'O sistema processa documentos, responde perguntas de clientes e acelera o trabalho por conta própria.',
+    card2Title: 'Mais dados significam mais lucro',
+    card2Text:
+      'A análise automática ajuda a encontrar novas oportunidades de crescimento e tomar decisões certas.',
+  },
+  solutions: {
+    title: 'Nossas Soluções',
+    subtitle:
+      'A lista de soluções se move sozinha. Passe o mouse sobre um ícone para pausar ou abra a lista completa.',
+    showAll: 'Mostrar tudo',
+    hideList: 'Ocultar lista',
+    priceFrom: 'Preço a partir de',
+    details: 'Detalhes',
+  },
+  automationHelp: {
+    titleBefore: 'Como a automação ajuda seus colaboradores a',
+    titleAccent: 'trabalhar mais rápido e com mais eficiência',
+    items: [
+      {
+        t: 'Trabalho sem atrasos',
+        d: 'A automação assume processos repetitivos, e os colaboradores gastam menos tempo nessas tarefas.',
+      },
+      {
+        t: 'Menos erros',
+        d: 'O fator humano é reduzido: o sistema verifica, analisa e entrega dados precisos.',
+      },
+      {
+        t: 'Mais resultados',
+        d: 'Os colaboradores saem da rotina e podem focar no crescimento do negócio e em novas ideias.',
+      },
+    ],
+  },
+  income: {
+    titleBefore: 'Como a automação aumenta a',
+    titleAccent: 'receita',
+    titleAfter: 'do seu negócio',
+    steps: [
+      {
+        n: '01',
+        t: 'Negócio inteligente',
+        d: 'soluções modernas de IA deixam sua empresa bem à frente da concorrência.',
+      },
+      {
+        n: '02',
+        t: 'Operações mais rápidas',
+        d: 'a automação de processos reduz perdas de tempo ao mínimo.',
+      },
+      {
+        n: '03',
+        t: 'Mais vendas',
+        d: 'muito mais clientes e negócios sem ampliar a equipe atual.',
+      },
+      {
+        n: '04',
+        t: 'Crescimento do lucro',
+        d: 'o resultado final vem da redução de custos e do aumento múltiplo da eficiência.',
+      },
+    ],
+  },
+  cases: {
+    title: 'Nossos Projetos',
+    subtitle: 'Soluções bem-sucedidas de automação para diferentes negócios',
+    learnMore: 'Saiba mais',
+    hide: 'Ocultar',
+    benefits: 'Benefícios',
+    productUi: 'Interface do produto',
+    watchPresentation: 'Ver apresentação',
+    sitePrefix: 'Site',
+  },
+  experts: {
+    title: 'Nossos Especialistas',
+    subtitle: 'Uma equipe de profissionais em IA e automação',
+    more: 'Mais detalhes',
+  },
+  aiIntegration: {
+    title: 'Integração de tecnologias de IA aos processos de negócio',
+    steps: [
+      {
+        t: 'Fazemos auditoria',
+        d: 'Identificamos gargalos onde a IA gera o maior valor.',
+      },
+      {
+        t: 'Alinhamos a solução',
+        d: 'Sob medida para a sua empresa.',
+      },
+      {
+        t: 'Integração',
+        d: 'Implementação suave da IA nos sistemas existentes.',
+      },
+      {
+        t: 'Treinamento',
+        d: 'Ensinamos a equipe a usar as novas ferramentas.',
+      },
+      {
+        t: 'Suporte',
+        d: 'Suporte técnico e consultorias especializadas.',
+      },
+    ],
+  },
+  plan: {
+    titleBefore: 'Plano de trabalho passo a passo para',
+    titleAccent: 'suas tarefas',
+    show: 'Abrir o plano passo a passo',
+    hide: 'Ocultar plano',
+    steps: [
+      {
+        t: 'Você envia a solicitação',
+        d: 'entramos em contato e discutimos suas tarefas',
+      },
+      {
+        t: 'Fazemos auditoria',
+        d: 'identificamos gargalos onde a IA gera o maior valor',
+      },
+      {
+        t: 'Alinhamos a solução',
+        d: 'sob medida para a sua empresa',
+      },
+      {
+        t: 'Testamos e implementamos',
+        d: 'minimizamos riscos e treinamos a equipe',
+      },
+      {
+        t: 'Acompanhamos e otimizamos',
+        d: 'ajudamos a se adaptar a um novo nível de automação',
+      },
+    ],
+    footerNote:
+      'Se o seu negócio tem processos complexos e muita rotina, a IA ajuda a trabalhar mais rápido e com mais eficiência.',
+  },
+  cta: {
+    titleLine1: 'PRONTO PARA A TRANSFORMAÇÃO',
+    titleLine2: 'DIGITAL?',
+    subtitle:
+      'Deixe uma solicitação e analisaremos gratuitamente seus processos de negócio para encontrar pelo menos 3 pontos de crescimento com IA.',
+    namePh: 'Como podemos te chamar?',
+    phonePh: '+7 (___) ___-__-__',
+    agreePrefix: 'Concordo com',
+    agreeLink: 'o consentimento para tratamento de dados pessoais',
+    submit: 'Enviar solicitação',
+    submitting: 'Enviando...',
+    orWrite: 'Ou escreva para nós',
+  },
+  footer: {
+    blurb:
+      'Integração profissional de tecnologias de IA aos negócios. Soluções inteligentes para quem valoriza o tempo.',
+    contacts: 'Contatos',
+    messengers: 'Mensageiros',
+    rights: '© 2025 Todos os direitos reservados.',
+    privacy: 'Política de tratamento de dados',
+    legalName: 'Empresário Individual Georgieva E.V.',
+    inn: 'INN 344692466070',
+  },
+  faq: {
+    support: 'Suporte',
+    online: 'Online · perguntas frequentes',
+    leaveRequest: 'Deixar solicitação',
+    haveQuestions: 'Tem perguntas?',
+    close: 'Fechar',
+    openAria: 'Abrir perguntas frequentes',
+    closeAria: 'Fechar suporte',
+    items: [
+      {
+        q: 'Por onde o trabalho começa?',
+        a: 'Com uma análise gratuita dos seus processos: vemos onde se perde tempo e dinheiro e sugerimos 2–3 pontos de crescimento com IA. Após o alinhamento, iniciamos um piloto ou a implementação completa.',
+      },
+      {
+        q: 'Quanto custa a implementação?',
+        a: 'Auditoria a partir de 15 000 ₽. Soluções prontas (RH, analytics, bots, integrações) de 30 000 a 75 000 ₽. O orçamento exato depende do escopo e dos sistemas atuais.',
+      },
+      {
+        q: 'Em quanto tempo veremos resultados?',
+        a: 'Os primeiros efeitos costumam aparecer no primeiro mês: menos rotina, respostas mais rápidas aos clientes e relatórios mais claros. O ciclo completo leva de 1 a 4 semanas, conforme a tarefa.',
+      },
+      {
+        q: 'Precisamos trocar o CRM ou o site?',
+        a: 'Não. Incorporamos a IA ao que você já usa: Bitrix24, AmoCRM, Telegram, planilhas e seus serviços internos. Migrar para novas plataformas não é obrigatório.',
+      },
+      {
+        q: 'Serve para pequenas empresas?',
+        a: 'Sim. Começamos por uma dor específica — leads, recrutamento, suporte ou relatórios — e escalamos apenas o que realmente economiza tempo e aumenta o lucro.',
+      },
+      {
+        q: 'E a segurança dos dados?',
+        a: 'Trabalhamos apenas com o acesso necessário, não armazenamos dados desnecessários e configuramos papéis para que cada colaborador veja só sua área. Tudo fica registrado no contrato.',
+      },
+      {
+        q: 'Vocês treinam a equipe?',
+        a: 'Sim. Após a implementação, fazemos treinamento e deixamos instruções simples. Se precisar, adicionamos suporte técnico mensal e atualizações das soluções.',
+      },
+      {
+        q: 'Como falar com vocês?',
+        a: 'Escreva no Telegram, Max ou VK, ligue +7 (961) 675-06-54 ou deixe uma solicitação no formulário do site — respondemos no mesmo dia em horário comercial.',
+      },
+    ],
+  },
+  forms: {
+    fillBoth: 'Preencha os dois campos, por favor',
+    agreeRequired: 'Aceite o tratamento de dados pessoais, por favor',
+    sendError: 'Erro no envio',
+    thankYou: '✅ Obrigado! Sua solicitação foi enviada. Entraremos em contato em breve.',
+    serviceApplication: 'Solicitação de serviço',
+    serviceCallHint: 'Deixe seus contatos — retornamos a ligação e discutimos o lançamento',
+    launchProcess: 'Iniciar este processo',
+    backToDesc: '← Voltar à descrição',
+    orWriteNow: 'Ou escreva agora',
+    applicationSent: 'Solicitação enviada',
+    thanksService: 'Obrigado! Entraremos em contato sobre o serviço em breve.',
+  },
+  services: [
+    {
+      id: 1,
+      title: 'Auditoria de processos',
+      shortDesc: 'Identificamos gargalos onde a IA traz o maior valor para o seu negócio.',
+      features: [
+        'Análise do fluxo documental atual',
+        'Busca de tarefas rotineiras dos gestores',
+        'Avaliação do potencial de economia de tempo',
+        'Relatório com recomendações de implementação',
+      ],
+    },
+    {
+      id: 2,
+      title: 'RH e Recrutamento (IA)',
+      shortDesc: 'Currículos e candidaturas processados em segundos. Assistente de IA para qualidade da contratação.',
+      features: [
+        'Scoring automático de candidatos',
+        'Entrevistador de IA (triagem inicial)',
+        'Análise de sentimento das ligações dos recrutadores',
+        'Resultado: +30% de eficiência no recrutamento',
+      ],
+    },
+    {
+      id: 3,
+      title: 'Integração de IA',
+      shortDesc: 'Implementação suave de IA no seu CRM e sistemas de negócio existentes.',
+      features: [
+        'Conexão da IA com Bitrix24 / AmoCRM',
+        'Configuração de respostas automáticas em messengers',
+        'Automação do processamento de solicitações',
+        'Minimização de erros humanos',
+      ],
+    },
+    {
+      id: 4,
+      title: 'Analytics de vendas',
+      shortDesc: 'A IA analisa o comportamento dos clientes e entrega previsões precisas de lucro.',
+      features: [
+        'Dashboards com métricas-chave',
+        'Análise dos motivos de recusa',
+        'Recomendações pessoais para upsell',
+        'Relatórios gerenciais automatizados',
+      ],
+    },
+    {
+      id: 5,
+      title: 'Treinamento da equipe',
+      shortDesc: 'Ensinamos sua equipe a trabalhar com novas ferramentas e redes neurais.',
+      features: [
+        'Workshops de engenharia de prompts',
+        'Instruções para uso de bots de IA',
+        'Suporte aos colaboradores na adaptação',
+        'Base de conhecimento com os seus dados',
+      ],
+    },
+    {
+      id: 6,
+      title: 'E-commerce IA',
+      shortDesc: 'Recomendações inteligentes de produtos. +15% no ticket médio com assistente de IA.',
+      features: [
+        'Ofertas personalizadas no site',
+        'Segmentação automática da base',
+        'Bot de IA para processamento de devoluções',
+        'Gestão dinâmica de preços',
+      ],
+    },
+    {
+      id: 7,
+      title: 'Assistente de viagens',
+      shortDesc: 'Seleção instantânea de tours por orçamento e roteiro. Libera 50% do tempo dos gestores.',
+      features: [
+        'Integração com bases de operadores turísticos',
+        'Seleção automática de excursões',
+        'Consultor de IA no Telegram 24/7',
+        'Suporte de visto via bot',
+      ],
+    },
+    {
+      id: 8,
+      title: 'Suporte técnico',
+      shortDesc: 'Manutenção e otimização das soluções implementadas. Monitoramento contínuo.',
+      features: [
+        'Atualização mensal dos modelos',
+        'Consultorias especializadas',
+        'Correção de falhas técnicas',
+        'Retreinamento da IA para novas tarefas',
+      ],
+    },
+  ],
+  caseItems: [
+    {
+      id: 1,
+      name: 'Plataforma de RH',
+      result: 'Automação do recrutamento',
+      text: 'Ecossistema único de contratação: candidatos de várias fontes em uma janela, scoring por IA e preparação para entrevistas sem rotina manual.',
+      benefits: [
+        'Todas as ferramentas de RH em uma plataforma de IA',
+        'Base unificada de candidatos de diferentes fontes',
+        'Scoring de currículos por IA e apoio na triagem inicial',
+        'Seleção automática de perguntas por vaga',
+        'Funil de contratação transparente e status de cada candidato',
+      ],
+      screenshotsAlt: [
+        'Tela principal da plataforma de RH KadroAI',
+        'Seção da plataforma de RH',
+        'Interface do ecossistema de contratação',
+        'Tela de trabalho do recrutamento',
+      ],
+    },
+    {
+      id: 2,
+      name: 'Logística com IA',
+      result: 'Logística autônoma',
+      text: 'O 24Logist controla motoristas via WhatsApp, MAX e SMS: da saída à entrega da carga, sem ligações infinitas do despachante.',
+      benefits: [
+        'Funil automático de notificações em cada etapa da viagem',
+        'Quadro Kanban de viagens atualizado a cada 10 segundos',
+        'Importação de viagens e motoristas do Excel em um clique',
+        'WhatsApp / MAX / SMS em uma janela, envios em massa',
+        'Analytics de confiabilidade de motoristas, transportadoras e gestores',
+        'Isolamento de dados da empresa e registro de ações',
+      ],
+      screenshotsAlt: ['Site 24Logist — tela principal', 'Recursos do 24Logist'],
+    },
+    {
+      id: 3,
+      name: 'Compras com IA',
+      result: 'Otimização de compras',
+      text: 'O AI ProfitFlow encontra fornecedores e canais de venda em minutos: contatos, análise por IA, propostas comerciais e envio via Gmail em um só espaço.',
+      benefits: [
+        'Dois modos: busca de fornecedores e de canais de venda',
+        'Consultas de IA + busca regional com resultados limpos',
+        'Extração de telefones e e-mails de sites',
+        'Scoring de ofertas por IA: prós, contras e riscos',
+        'Proposta comercial em um clique e envio via Gmail OAuth',
+        'Exportação para Excel e histórico local de buscas',
+      ],
+      screenshotsAlt: [
+        'Interface de busca de fornecedores',
+        'Análise por IA e proposta comercial',
+        'Área de trabalho do AI ProfitFlow',
+      ],
+    },
+    {
+      id: 4,
+      name: 'Serviço de beleza',
+      result: 'Solução completa para salões',
+      text: 'Plataforma sob medida para a marca do salão: site, agendamento online, área do cliente, admin, bônus, indicações e lembretes.',
+      benefits: [
+        'Site de serviços com a marca, sem widget genérico',
+        'Agendamento online 24/7: serviço → profissional → horário',
+        'Área do cliente: bônus, promoções, indicações, chat',
+        'Admin: clientes, agenda, profissionais, push e chat',
+        'Você possui o código, o servidor e os dados — não aluga um CRM',
+        'Layout responsivo e PWA para clientes de beleza no celular',
+      ],
+      screenshotsAlt: [
+        'Site do salão Norma Tela',
+        'Seção da plataforma de beleza',
+        'Versão mobile',
+        'Área do cliente',
+      ],
+    },
+  ],
+  expertItems: [
+    {
+      id: 1,
+      name: 'Ekaterina Georgieva',
+      title: 'Programadora de IA',
+      shortDesc: 'Especialista em programação de inteligência artificial e automação de processos complexos.',
+      fullDesc: `Transforma o caos de dados em um sistema claro: a partir de milhões de linhas monta um relatório preciso e estruturado com cálculos prontos.
+Vê os processos de negócio além da superfície — encontra onde se perde tempo, dinheiro e recursos e transforma isso em soluções automatizadas. Mostra o que pode ser simplificado, automatizado e fortalecido agora. Não só implementa o sistema, mas também ensina a usá-lo para obter o máximo resultado.
+Cria serviços para as necessidades da empresa e tem soluções prontas que podem ser adaptadas e implantadas rapidamente.
+Competências principais:
+• Programação de IA e automação de processos
+• Criação de sistemas de relatórios e cálculos
+• Análise e otimização de processos de negócio
+• Desenvolvimento de serviços para a empresa
+• Treinamento e implantação de automações
+• Soluções prontas para um início rápido
+Resultado do trabalho:
+Você recebe um sistema que substitui o trabalho manual, reduz erros e transforma processos complexos em uma mecânica simples e clara.`,
+    },
+    {
+      id: 2,
+      name: 'Daria Lemeshevskaya',
+      title: 'Desenvolvedora de bots de IA',
+      shortDesc:
+        'Especialista em desenvolvimento de bots inteligentes e automação de processos de negócio com inteligência artificial.',
+      fullDesc: `Cria soluções que realmente funcionam: da ideia a um sistema completo integrado ao seu negócio. Escreve código, monta lógica e arquitetura, para que os bots funcionem de forma estável, sem falhas nem “gambiarras”.
+Tem mais de 100 projetos realizados: de assistentes simples a agentes de IA complexos que automatizam vendas, RH, processamento de dados e atendimento.
+Competências principais:
+• Desenvolvimento de bots de IA para o negócio
+• Programação e criação da lógica dos sistemas
+• Integrações com API, CRM e serviços Google
+• Automação de processos (vendas, RH, analytics)
+• Soluções estáveis sem falhas
+Resultado do trabalho:
+Você recebe não apenas um bot, mas uma ferramenta que economiza tempo, reduz a carga da equipe e aumenta o lucro.`,
+    },
+    {
+      id: 3,
+      name: 'Evgeniya Kirillova',
+      title: 'Arquiteta de serviços de IA',
+      shortDesc:
+        'Especialista em criação e evolução de serviços baseados em redes neurais, transformando ideias em soluções pensadas, estáveis e escaláveis.',
+      fullDesc: `Estuda constantemente novas capacidades de IA e as aplica em projetos, para que você receba não só uma ferramenta funcional, mas um sistema moderno com espaço para crescer. Constrói a estrutura do serviço do zero, desenha a lógica e adiciona recursos que você talvez nem tenha pensado — mas que reforçam o resultado.
+Cria serviços estáveis, sem falhas, e fáceis de escalar para as necessidades do negócio.
+Já entregou projetos em várias áreas: RH, medicina (incluindo odontologia), serviços e comércio.
+Competências principais:
+• Design e evolução de serviços de IA
+• Entendimento profundo das redes neurais
+• Construção da estrutura e lógica de produtos
+• Adição de funcionalidades que aumentam a eficiência
+• Soluções estáveis e escaláveis
+Resultado do trabalho:
+Você recebe não só um serviço, mas um sistema pensado que cresce com o seu negócio, fortalece os processos e gera vantagem competitiva.`,
+    },
+  ],
+  common: {
+    close: 'Fechar',
+    currency: '₽',
+  },
+  lang: {
+    label: 'Idioma',
+    choose: 'Escolha o idioma',
+  },
+} satisfies Messages;
+
+export default messages;

@@ -1,0 +1,448 @@
+import type { Messages } from '../types';
+
+const messages = {
+  nav: {
+    solutions: 'Soluzioni',
+    cases: 'Casi',
+    contacts: 'Contatti',
+    consultation: 'Consulenza',
+    writeUs: 'Scrivici',
+    openMenu: 'Apri il menu',
+  },
+  hero: {
+    status: 'AI systems online · automation ready',
+    titleLine1: 'TECNOLOGIE INTELLIGENTI',
+    titleLine2: 'PER LA TUA AZIENDA',
+    subtitle: 'Automatizziamo le attività ripetitive, aumentiamo le vendite e ti facciamo risparmiare tempo con soluzioni AI su misura.',
+    cta: 'Scopri di più',
+  },
+  workBoost: {
+    titleBefore: 'Come semplificare il lavoro e',
+    titleAccent: 'ridurre i costi',
+    titleAfter: 'con tecnologie intelligenti?',
+    card1Title: 'Elimina le attività ripetitive',
+    card1Text: 'Il sistema elabora documenti, risponde alle domande dei clienti e accelera il lavoro in autonomia.',
+    card2Title: 'Più dati significa più profitto',
+    card2Text: 'L’analisi automatizzata aiuta a trovare nuove opportunità di crescita e a prendere decisioni corrette.',
+  },
+  solutions: {
+    title: 'Le nostre soluzioni',
+    subtitle: 'Il feed delle soluzioni scorre da solo. Passa sull’icona per metterlo in pausa oppure apri l’elenco completo.',
+    showAll: 'Mostra tutto',
+    hideList: 'Nascondi elenco',
+    priceFrom: 'Prezzo da',
+    details: 'Dettagli',
+  },
+  automationHelp: {
+    titleBefore: 'Come l’automazione aiuta i tuoi dipendenti a',
+    titleAccent: 'lavorare più velocemente e con maggiore efficienza',
+    items: [
+      {
+        t: 'Lavoro senza ritardi',
+        d: 'L’automazione gestisce i processi ricorrenti, così i dipendenti dedicano meno tempo a queste attività.',
+      },
+      {
+        t: 'Meno errori',
+        d: 'Il fattore umano si riduce: il sistema controlla, analizza e fornisce dati precisi da solo.',
+      },
+      {
+        t: 'Più risultati',
+        d: 'I dipendenti vengono liberati dalla routine e possono concentrarsi sulla crescita del business e su nuove idee.',
+      },
+    ],
+  },
+  income: {
+    titleBefore: 'Come l’automazione aumenta',
+    titleAccent: 'i ricavi',
+    titleAfter: 'della tua azienda',
+    steps: [
+      {
+        n: '01',
+        t: 'Business intelligente',
+        d: 'le moderne soluzioni AI rendono la tua azienda molto più forte dei concorrenti.',
+      },
+      {
+        n: '02',
+        t: 'Operazioni più rapide',
+        d: 'l’automazione dei processi riduce al minimo le perdite di tempo.',
+      },
+      {
+        n: '03',
+        t: 'Vendite più alte',
+        d: 'molti più clienti e trattative senza ampliare il team attuale.',
+      },
+      {
+        n: '04',
+        t: 'Crescita del profitto',
+        d: 'il risultato finale nasce dalla riduzione dei costi e da un forte aumento dell’efficienza.',
+      },
+    ],
+  },
+  cases: {
+    title: 'I nostri progetti',
+    subtitle: 'Soluzioni di automazione di successo per aziende diverse',
+    learnMore: 'Scopri di più',
+    hide: 'Nascondi',
+    benefits: 'Vantaggi',
+    productUi: 'Interfaccia del prodotto',
+    watchPresentation: 'Guarda la presentazione',
+    sitePrefix: 'Sito',
+  },
+  experts: {
+    title: 'Le nostre esperte',
+    subtitle: 'Un team di professioniste in AI e automazione',
+    more: 'Maggiori dettagli',
+  },
+  aiIntegration: {
+    title: 'Inserimento delle tecnologie AI nei processi aziendali',
+    steps: [
+      {
+        t: 'Eseguiamo un audit',
+        d: 'Identifichiamo i colli di bottiglia dove l’AI porterà il massimo valore.',
+      },
+      {
+        t: 'Concordiamo la soluzione',
+        d: 'Personalizzata per la tua azienda.',
+      },
+      {
+        t: 'Integrazione',
+        d: 'Implementazione fluida dell’AI nei sistemi esistenti.',
+      },
+      {
+        t: 'Formazione',
+        d: 'Formiamo i dipendenti a lavorare con i nuovi strumenti.',
+      },
+      {
+        t: 'Supporto',
+        d: 'Supporto tecnico e consulenze specialistiche.',
+      },
+    ],
+  },
+  plan: {
+    titleBefore: 'Piano di lavoro passo dopo passo per',
+    titleAccent: 'le tue attività',
+    show: 'Apri il piano passo dopo passo',
+    hide: 'Nascondi piano',
+    steps: [
+      {
+        t: 'Invii una richiesta',
+        d: 'ti contattiamo e discutiamo le tue attività',
+      },
+      {
+        t: 'Eseguiamo un audit',
+        d: 'identifichiamo i colli di bottiglia dove l’AI porterà il massimo valore',
+      },
+      {
+        t: 'Concordiamo una soluzione',
+        d: 'personalizzata per la tua azienda',
+      },
+      {
+        t: 'Testiamo e implementiamo',
+        d: 'riduciamo i rischi e formiamo il tuo team',
+      },
+      {
+        t: 'Supportiamo e ottimizziamo',
+        d: 'ti aiutiamo ad adattarti a un nuovo livello di automazione',
+      },
+    ],
+    footerNote:
+      'Se la tua azienda ha processi complessi e molte attività ripetitive, l’AI aiuterà a rendere il lavoro più rapido ed efficiente.',
+  },
+  cta: {
+    titleLine1: 'PRONTO PER LA',
+    titleLine2: 'TRASFORMAZIONE DIGITALE?',
+    subtitle:
+      'Lascia una richiesta e analizzeremo gratuitamente i tuoi processi aziendali per trovare almeno 3 punti di crescita con l’AI.',
+    namePh: 'Come ti chiami?',
+    phonePh: '+7 (___) ___-__-__',
+    agreePrefix: 'Accetto',
+    agreeLink: 'il consenso al trattamento dei dati personali',
+    submit: 'Invia richiesta',
+    submitting: 'Invio...',
+    orWrite: 'Oppure scrivici',
+  },
+  footer: {
+    blurb: 'Integrazione professionale delle tecnologie AI nel business. Soluzioni intelligenti per chi dà valore al tempo.',
+    contacts: 'Contatti',
+    messengers: 'Messenger',
+    rights: '© 2025 Tutti i diritti riservati.',
+    privacy: 'Informativa sul trattamento dei dati',
+    legalName: 'Imprenditrice individuale Georgieva E.V.',
+    inn: 'Codice fiscale 344692466070',
+  },
+  faq: {
+    support: 'Supporto',
+    online: 'Disponibile · domande frequenti',
+    leaveRequest: 'Lascia una richiesta',
+    haveQuestions: 'Hai domande?',
+    close: 'Chiudi',
+    openAria: 'Apri le domande frequenti',
+    closeAria: 'Chiudi supporto',
+    items: [
+      {
+        q: 'Da dove inizia il lavoro?',
+        a: 'Da un’analisi gratuita dei tuoi processi: vediamo dove si perdono tempo e denaro e proponiamo 2-3 punti di crescita con l’AI. Dopo l’approvazione, avviamo un pilota o l’implementazione completa.',
+      },
+      {
+        q: 'Quanto costa l’implementazione?',
+        a: 'Un audit parte da 15 000 RUB. Le soluzioni pronte (HR, analitica, bot, integrazioni) vanno da 30 000 a 75 000 RUB. Il preventivo esatto dipende dall’ambito delle attività e dai sistemi attuali.',
+      },
+      {
+        q: 'Quanto rapidamente vedremo i risultati?',
+        a: 'I primi effetti sono di solito visibili già nel primo mese: meno routine, risposte più rapide ai clienti e report più chiari. Un ciclo completo di implementazione richiede da 1 a 4 settimane a seconda dell’attività.',
+      },
+      {
+        q: 'Dobbiamo sostituire CRM o sito?',
+        a: 'No. Inseriamo l’AI in ciò che usi già: Bitrix24, AmoCRM, Telegram, fogli di calcolo e servizi interni. Non è necessario passare a nuove piattaforme.',
+      },
+      {
+        q: 'È adatto alle piccole imprese?',
+        a: 'Sì. Iniziamo da un problema concreto, come lead, assunzioni, supporto o reportistica, e ampliamo solo ciò che fa davvero risparmiare tempo e aumenta il profitto.',
+      },
+      {
+        q: 'E la sicurezza dei dati?',
+        a: 'Lavoriamo solo con gli accessi necessari, non conserviamo dati superflui e configuriamo i ruoli in modo che i dipendenti vedano solo la propria area di responsabilità. Tutti i dettagli vengono fissati nel contratto.',
+      },
+      {
+        q: 'Formate i dipendenti?',
+        a: 'Sì. Dopo l’implementazione svolgiamo la formazione e lasciamo istruzioni semplici. Se necessario, aggiungiamo supporto tecnico mensile e aggiornamenti della soluzione.',
+      },
+      {
+        q: 'Come possiamo contattarvi?',
+        a: 'Scrivi su Telegram, Max o VK, chiama il +7 (961) 675-06-54 oppure lascia una richiesta nel modulo del sito. Risponderemo lo stesso giorno durante l’orario lavorativo.',
+      },
+    ],
+  },
+  forms: {
+    fillBoth: 'Compila entrambi i campi',
+    agreeRequired: 'Accetta il trattamento dei dati personali',
+    sendError: 'Errore di invio',
+    thankYou: '✅ Grazie! La tua richiesta è stata inviata. Ti contatteremo presto.',
+    serviceApplication: 'Richiesta di servizio',
+    serviceCallHint: 'Lascia i tuoi contatti. Ti richiameremo e discuteremo il lancio',
+    launchProcess: 'Avvia questo processo',
+    backToDesc: '← Torna alla descrizione',
+    orWriteNow: 'Oppure scrivi subito',
+    applicationSent: 'Richiesta inviata',
+    thanksService: 'Grazie! Ti contatteremo presto riguardo al servizio.',
+  },
+  services: [
+    {
+      id: 1,
+      title: 'Audit dei processi',
+      shortDesc: 'Identifichiamo i colli di bottiglia dove l’AI porterà il massimo valore alla tua azienda.',
+      features: [
+        'Analisi dei flussi documentali attuali',
+        'Ricerca delle attività ripetitive dei manager',
+        'Valutazione del potenziale risparmio di tempo',
+        'Report con raccomandazioni di implementazione',
+      ],
+    },
+    {
+      id: 2,
+      title: 'HR e assunzioni (AI)',
+      shortDesc: 'Candidature e CV elaborati in pochi secondi. Un assistente AI per il controllo della qualità del recruiting.',
+      features: [
+        'Valutazione automatica dei candidati',
+        'Intervistatore AI per la prima selezione',
+        'Analisi del sentiment delle chiamate dei recruiter',
+        'Risultato: +30% di efficienza nelle assunzioni',
+      ],
+    },
+    {
+      id: 3,
+      title: 'Integrazione AI',
+      shortDesc: 'Implementazione fluida delle tecnologie AI nei tuoi CRM e sistemi aziendali esistenti.',
+      features: [
+        'Collegamento dell’AI con Bitrix24 / AmoCRM',
+        'Configurazione delle risposte automatiche nei messenger',
+        'Automazione dell’elaborazione delle richieste in entrata',
+        'Riduzione degli errori umani',
+      ],
+    },
+    {
+      id: 4,
+      title: 'Analisi delle vendite',
+      shortDesc: 'L’AI analizza il comportamento dei clienti e fornisce previsioni precise sul profitto.',
+      features: [
+        'Dashboard con metriche chiave',
+        'Analisi dei motivi di rifiuto dei clienti',
+        'Raccomandazioni personali per upsell',
+        'Reportistica direzionale automatizzata',
+      ],
+    },
+    {
+      id: 5,
+      title: 'Formazione del personale',
+      shortDesc: 'Insegniamo al tuo team a lavorare con nuovi strumenti e reti neurali.',
+      features: [
+        'Workshop di prompt engineering',
+        'Istruzioni per lavorare con bot AI',
+        'Supporto ai dipendenti durante l’adattamento',
+        'Base di conoscenza costruita sui tuoi dati',
+      ],
+    },
+    {
+      id: 6,
+      title: 'AI per e-commerce',
+      shortDesc: 'Raccomandazioni intelligenti di prodotti. +15% al valore medio dell’ordine con un assistente AI.',
+      features: [
+        'Offerte personalizzate sul sito',
+        'Segmentazione automatica del database',
+        'Bot AI per la gestione dei resi',
+        'Gestione dinamica dei prezzi',
+      ],
+    },
+    {
+      id: 7,
+      title: 'Assistente viaggi',
+      shortDesc: 'Selezione istantanea dei tour per budget e itinerario. Libera il 50% del tempo dei manager.',
+      features: [
+        'Integrazione con i database dei tour operator',
+        'Selezione automatica delle escursioni',
+        'Consulente AI in Telegram 24/7',
+        'Supporto visto tramite bot',
+      ],
+    },
+    {
+      id: 8,
+      title: 'Supporto tecnico',
+      shortDesc: 'Manutenzione e ottimizzazione delle soluzioni implementate. Monitoraggio continuo.',
+      features: [
+        'Aggiornamenti mensili dei modelli',
+        'Consulenze specialistiche',
+        'Correzione dei guasti tecnici',
+        'Addestramento aggiuntivo dell’AI per nuove attività',
+      ],
+    },
+  ],
+  caseItems: [
+    {
+      id: 1,
+      name: 'Piattaforma HR',
+      result: 'Automazione del recruiting',
+      text: 'Un ecosistema unico per le assunzioni: candidati da fonti diverse in una sola finestra, scoring AI e preparazione ai colloqui senza routine manuale.',
+      benefits: [
+        'Tutti gli strumenti HR in un’unica piattaforma AI',
+        'Database candidato unificato da fonti diverse',
+        'Scoring AI dei CV e supporto alla prima selezione',
+        'Selezione automatica delle domande di colloquio per ogni vacancy',
+        'Funnel di recruiting trasparente e tracciamento dello stato dei candidati',
+      ],
+      screenshotsAlt: [
+        'Schermata principale della piattaforma HR KadroAI',
+        'Sezione della piattaforma HR',
+        'Interfaccia dell’ecosistema di recruiting',
+        'Schermata dell’area di lavoro per il recruiting',
+      ],
+    },
+    {
+      id: 2,
+      name: 'Manager logistico AI',
+      result: 'Logistica autonoma',
+      text: '24Logist controlla autonomamente gli autisti tramite WhatsApp, MAX e SMS: dalla partenza alla consegna del carico, senza chiamate infinite del dispatcher.',
+      benefits: [
+        'Funnel automatico di notifiche per gli autisti in ogni fase del viaggio',
+        'Bacheca Kanban dei viaggi aggiornata ogni 10 secondi',
+        'Importazione con un clic di viaggi e autisti da Excel',
+        'WhatsApp / MAX / SMS da un’unica finestra, invii massivi',
+        'Analisi dell’affidabilità di autisti, aziende di trasporto e attività dei manager',
+        'Isolamento dei dati aziendali e registro delle azioni',
+      ],
+      screenshotsAlt: ['Sito 24Logist, schermata principale', 'Funzionalità di 24Logist'],
+    },
+    {
+      id: 3,
+      name: 'Manager acquisti AI',
+      result: 'Ottimizzazione degli acquisti',
+      text: 'AI ProfitFlow trova fornitori e canali di vendita in pochi minuti: contatti, analisi AI, offerte commerciali e invio Gmail in un unico spazio di lavoro.',
+      benefits: [
+        'Due modalità: ricerca fornitori e ricerca canali di vendita',
+        'Query AI più ricerca regionale con risultati puliti',
+        'Estrazione di telefoni ed e-mail dai siti',
+        'Scoring AI dell’offerta: vantaggi, svantaggi e rischi',
+        'Offerta commerciale in un clic e invio tramite Gmail OAuth',
+        'Export Excel e cronologia locale delle ricerche',
+      ],
+      screenshotsAlt: ['Interfaccia di ricerca fornitori', 'Analisi AI e offerta commerciale', 'Desktop AI ProfitFlow'],
+    },
+    {
+      id: 4,
+      name: 'Servizio beauty',
+      result: 'Soluzione completa per saloni',
+      text: 'Una piattaforma personalizzata per il brand del salone: sito, prenotazione online, area cliente, pannello admin, bonus, referral e promemoria.',
+      benefits: [
+        'Sito servizi brandizzato invece di un widget modello',
+        'Prenotazione online 24/7: servizio, specialista, fascia oraria',
+        'Area cliente: bonus, promozioni, referral, chat',
+        'Pannello admin: clienti, calendario, specialisti, notifiche push e chat',
+        'Possiedi codice, server e dati invece di affittare un CRM',
+        'Layout responsive e PWA per clienti beauty su smartphone',
+      ],
+      screenshotsAlt: ['Sito del salone Norma Tela', 'Sezione piattaforma beauty', 'Versione mobile', 'Area cliente'],
+    },
+  ],
+  expertItems: [
+    {
+      id: 1,
+      name: 'Ekaterina Georgieva',
+      title: 'Programmatrice AI',
+      shortDesc: 'Specialista nella programmazione dell’intelligenza artificiale e nell’automazione di processi complessi.',
+      fullDesc: `Trasforma il caos dei dati in un sistema chiaro: da milioni di righe costruisce un report preciso, strutturato e con calcoli pronti.
+Vede i processi aziendali oltre la superficie, trova dove si perdono tempo, denaro e risorse e li trasforma in soluzioni automatizzate. Mostrerà cosa può essere semplificato, automatizzato e rafforzato già ora. Non si limita a implementare un sistema, ma insegna anche come usarlo per ottenere il massimo risultato.
+Crea servizi per le attività dell’azienda e dispone di soluzioni pronte che possono essere adattate e implementate rapidamente.
+Competenze chiave:
+• Programmazione AI e automazione dei processi
+• Creazione di sistemi per report e calcoli
+• Analisi e ottimizzazione dei processi aziendali
+• Sviluppo di servizi per le attività aziendali
+• Formazione e implementazione dell’automazione
+• Soluzioni pronte per una partenza rapida
+Risultato del lavoro:
+Ottieni un sistema che sostituisce il lavoro manuale, riduce gli errori e trasforma processi complessi in un meccanismo semplice e chiaro.`,
+    },
+    {
+      id: 2,
+      name: 'Daria Lemeshevskaya',
+      title: 'Sviluppatrice di bot AI',
+      shortDesc: 'Specialista nello sviluppo di bot intelligenti e nell’automazione dei processi aziendali basati sull’intelligenza artificiale.',
+      fullDesc: `Crea soluzioni che funzionano davvero: dall’idea a un sistema completo integrato nel tuo business. Scrive codice, costruisce logica e architettura, così i bot lavorano in modo stabile, senza guasti o soluzioni fragili.
+Ha completato più di 100 progetti, da semplici assistenti ad agenti AI complessi che automatizzano vendite, processi HR, elaborazione dati e servizio clienti.
+Competenze chiave:
+• Sviluppo di bot AI per attività aziendali
+• Programmazione e creazione della logica dei sistemi
+• Integrazioni con API, CRM e servizi Google
+• Automazione dei processi di vendita, HR e analisi
+• Creazione di soluzioni stabili senza guasti
+Risultato del lavoro:
+Ottieni non solo un bot, ma uno strumento che fa risparmiare tempo, riduce il carico del team e aumenta il profitto.`,
+    },
+    {
+      id: 3,
+      name: 'Evgeniya Kirillova',
+      title: 'Architetta di servizi AI',
+      shortDesc: 'Specialista nella creazione e nello sviluppo di servizi basati su reti neurali, trasforma idee in soluzioni solide, stabili e scalabili.',
+      fullDesc: `Studia costantemente le nuove capacità dell’AI e le integra nei progetti, così ricevi non solo uno strumento funzionante, ma un sistema moderno con spazio per crescere. Sa costruire la struttura di un servizio da zero, progettarne la logica e aggiungere funzionalità a cui potresti non aver pensato, ma che rafforzano in modo decisivo il risultato.
+Crea servizi che funzionano stabilmente senza guasti e possono scalare facilmente per le attività aziendali.
+Ha realizzato progetti in nicchie diverse: HR, medicina inclusa l’odontoiatria, servizi e ambiti commerciali.
+Competenze chiave:
+• Progettazione e sviluppo di servizi AI
+• Comprensione profonda delle capacità delle reti neurali
+• Costruzione della struttura e della logica di prodotto
+• Aggiunta di funzionalità che rafforzano l’efficienza
+• Creazione di soluzioni stabili e scalabili
+Risultato del lavoro:
+Ottieni non solo un servizio, ma un sistema ben progettato che cresce con la tua azienda, rafforza i processi e dà un vantaggio competitivo.`,
+    },
+  ],
+  common: {
+    close: 'Chiudi',
+    currency: '₽',
+  },
+  lang: {
+    label: 'Lingua',
+    choose: 'Scegli lingua',
+  },
+} satisfies Messages;
+
+export default messages;
