@@ -6,40 +6,57 @@
 
 | Домен | Роль |
 | --- | --- |
-| **aiprofitflow.ru** | основной (canonical, GitHub Pages Custom domain) |
-| **аипоток.рф** | редирект на основной у регистратора DNS |
+| **aiprofitflow.ru** | основной (canonical, GitHub Pages Custom domain + бесплатный SSL) |
+| **аипотокприбыли.рф** | редирект на основной у Timeweb Cloud |
+| **www.aiprofitflow.ru** | CNAME → GitHub Pages (редирект на apex) |
 
-### DNS для `aiprofitflow.ru` (apex)
+Punycode для кириллического домена: `xn--80acuabjjuaidmw6k.xn--p1ai`
 
-Добавьте у регистратора записи:
+### DNS для `aiprofitflow.ru` в Timeweb Cloud
 
-**A**
+Домены и SSL → `aiprofitflow.ru` → DNS.
+
+Удалите конфликтующие A/AAAA/CNAME на `@` и `www`, затем добавьте:
+
+**A** (имя `@` или пусто):
 - `185.199.108.153`
 - `185.199.109.153`
 - `185.199.110.153`
 - `185.199.111.153`
 
-**AAAA**
+**AAAA** (имя `@`):
 - `2606:50c0:8000::153`
 - `2606:50c0:8001::153`
 - `2606:50c0:8002::153`
 - `2606:50c0:8003::153`
 
-Опционально **CNAME** `www` → `Ekaterina1-ai.github.io`
+**CNAME** `www` → `Ekaterina1-ai.github.io`
 
-### DNS для `аипоток.рф`
+SSL для `aiprofitflow.ru` выдаёт GitHub Pages (Let's Encrypt) автоматически после проверки DNS. В настройках репозитория Pages включите **Enforce HTTPS**.
 
-Настройте **URL-редирект / forwarding** на `https://aiprofitflow.ru` (чтобы не было дублей в SEO).  
-Если регистратор умеет только A/CNAME — направьте так же на GitHub Pages, но в Яндекс/Google каноническим оставьте `aiprofitflow.ru`.
+### DNS / редирект для `аипотокприбыли.рф`
 
-После DNS в Settings → Pages включите **Enforce HTTPS**.
+GitHub Pages принимает **только один** custom domain. Второй домен настраивается как редирект:
+
+1. Timeweb Cloud → Домены и SSL → `аипотокприбыли.рф`
+2. Включите **URL-перенаправление / forwarding** на `https://aiprofitflow.ru`
+3. Если есть опция HTTPS/SSL для редиректа — включите (бесплатный сертификат Timeweb или Let's Encrypt в панели)
+
+Если редиректа нет — направьте A/AAAA так же на IP GitHub Pages, но каноническим в SEO оставьте `aiprofitflow.ru`.
+
+## Деплой
+
+```bash
+npm install
+npm run deploy
+```
+
+Это собирает сайт и публикует ветку `gh-pages` (её читает GitHub Pages). Пуш только в `main` сайт не обновляет.
 
 ## Локально
 
 ```bash
-npm install
-npm run build
-npm run preview
+npm run start
 ```
 
-Форма заявок (`/api/send-application`) на GitHub Pages не работает без отдельного бэкенда — для продакшена нужен сервер или serverless.
+Форма заявок (`/api/send-application`) на GitHub Pages без отдельного бэкенда не работает.
