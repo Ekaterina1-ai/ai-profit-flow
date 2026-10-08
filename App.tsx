@@ -43,6 +43,7 @@ import LanguageSwitcher from './i18n/LanguageSwitcher';
 import { assetUrl } from './assetUrl';
 import { publishedArticles } from './content/articles';
 import { sendLead } from './formApi';
+import { notify } from './Notify';
 
 const SOCIAL_LINKS = [
   {
@@ -521,11 +522,11 @@ const ServiceModal: React.FC<{ service: ServiceItem | null, onClose: () => void 
   const submitLead = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) {
-      alert(t.forms.fillBoth);
+      notify(t.forms.fillBoth, 'info');
       return;
     }
     if (!agree) {
-      alert(t.forms.agreeRequired);
+      notify(t.forms.agreeRequired, 'info');
       return;
     }
 
@@ -538,7 +539,7 @@ const ServiceModal: React.FC<{ service: ServiceItem | null, onClose: () => void 
       });
       setSent(true);
     } catch (err) {
-      alert(`❌ Ошибка: ${err instanceof Error ? err.message : String(err)}`);
+      notify(err instanceof Error ? err.message : String(err), 'error');
     } finally {
       setSubmitting(false);
     }
@@ -1069,12 +1070,12 @@ const App: React.FC = () => {
     e.preventDefault();
     
     if (!formName.trim() || !formPhone.trim()) {
-      alert(t.forms.fillBoth);
+      notify(t.forms.fillBoth, 'info');
       return;
     }
 
     if (!agree) {
-      alert(t.forms.agreeRequired);
+      notify(t.forms.agreeRequired, 'info');
       return;
     }
 
@@ -1084,13 +1085,13 @@ const App: React.FC = () => {
         name: formName.trim(),
         phone: formPhone.trim(),
       });
-      alert(t.forms.thankYou);
+      notify(t.forms.thankYou, 'success');
       setFormName('');
       setFormPhone('');
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : String(err);
       console.error('Full error:', err);
-      alert(`${t.forms.sendError}: ${errorMsg}`);
+      notify(`${t.forms.sendError}: ${errorMsg}`, 'error');
     } finally {
       setIsSubmitting(false);
     }

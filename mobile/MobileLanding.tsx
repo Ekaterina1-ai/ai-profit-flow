@@ -37,6 +37,7 @@ import LanguageSwitcher from '../i18n/LanguageSwitcher';
 import { assetUrl } from '../assetUrl';
 import { publishedArticles } from '../content/articles';
 import { sendLead } from '../formApi';
+import { notify } from '../Notify';
 import './mobile.css';
 
 const SOCIAL = [
@@ -347,21 +348,24 @@ const MobileLanding: React.FC = () => {
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formName.trim() || !formPhone.trim()) {
-      alert(t.forms.fillBoth);
+      notify(t.forms.fillBoth, 'info');
       return;
     }
     if (!agree) {
-      alert(t.forms.agreeRequired);
+      notify(t.forms.agreeRequired, 'info');
       return;
     }
     setSubmitting(true);
     try {
       await sendLead({ name: formName.trim(), phone: formPhone.trim() });
-      alert(t.forms.thankYou);
+      notify(t.forms.thankYou, 'success');
       setFormName('');
       setFormPhone('');
     } catch (err) {
-      alert(`❌ ${t.forms.sendError}: ${err instanceof Error ? err.message : String(err)}`);
+      notify(
+        `${t.forms.sendError}: ${err instanceof Error ? err.message : String(err)}`,
+        'error',
+      );
     } finally {
       setSubmitting(false);
     }
@@ -371,11 +375,11 @@ const MobileLanding: React.FC = () => {
     e.preventDefault();
     if (!service) return;
     if (!svcName.trim() || !svcPhone.trim()) {
-      alert(t.forms.fillBoth);
+      notify(t.forms.fillBoth, 'info');
       return;
     }
     if (!svcAgree) {
-      alert(t.forms.agreeRequired);
+      notify(t.forms.agreeRequired, 'info');
       return;
     }
     setSvcSending(true);
@@ -387,7 +391,10 @@ const MobileLanding: React.FC = () => {
       });
       setSvcSent(true);
     } catch (err) {
-      alert(`❌ ${t.forms.sendError}: ${err instanceof Error ? err.message : String(err)}`);
+      notify(
+        `${t.forms.sendError}: ${err instanceof Error ? err.message : String(err)}`,
+        'error',
+      );
     } finally {
       setSvcSending(false);
     }

@@ -36,8 +36,8 @@ const server = http.createServer(async (req, res) => {
           return;
         }
 
-        const botToken = process.env.VITE_TELEGRAM_BOT_TOKEN;
-        const chatId = process.env.VITE_TELEGRAM_CHAT_ID;
+        const botToken = process.env.TELEGRAM_BOT_TOKEN || process.env.VITE_TELEGRAM_BOT_TOKEN;
+        const chatId = process.env.TELEGRAM_CHAT_ID || process.env.VITE_TELEGRAM_CHAT_ID;
 
         console.log('Bot Token:', botToken ? '✓ заполнен' : '✗ не заполнен');
         console.log('Chat ID:', chatId ? '✓ заполнен' : '✗ не заполнен');
