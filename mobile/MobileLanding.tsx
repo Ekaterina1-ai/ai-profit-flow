@@ -463,36 +463,102 @@ const MobileLanding: React.FC = () => {
         ))}
       </aside>
 
-      {/* HERO */}
+      {/* HERO — atmosphere mirrors desktop (grid + orbits + neural mesh) */}
       <section id="m-hero" className="m-hero">
         <div className="m-hero-grid" aria-hidden />
+        <div className="m-hero-scan" aria-hidden />
+        <div className="m-hero-orbit" aria-hidden />
+        <svg
+          className="m-hero-mesh"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden
+        >
+          <defs>
+            <linearGradient id="mHeroWire" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.2" />
+            </linearGradient>
+          </defs>
+          <g>
+            <path
+              className="m-hero-mesh-line"
+              d="M80 180 L260 240 L420 120 L610 210 L780 140 L980 230 L1120 160"
+            />
+            <path
+              className="m-hero-mesh-line"
+              d="M120 520 L300 430 L480 510 L670 390 L860 470 L1040 400"
+            />
+            <path
+              className="m-hero-mesh-line"
+              d="M260 240 L300 430 M420 120 L480 510 M610 210 L670 390 M780 140 L860 470"
+            />
+          </g>
+          <g>
+            {[
+              [80, 180],
+              [260, 240],
+              [420, 120],
+              [610, 210],
+              [780, 140],
+              [980, 230],
+              [1120, 160],
+              [120, 520],
+              [300, 430],
+              [480, 510],
+              [670, 390],
+              [860, 470],
+              [1040, 400],
+            ].map(([x, y], i) => (
+              <circle
+                key={`${x}-${y}`}
+                className={`m-hero-mesh-node${i % 3 === 0 ? ' is-alive' : ''}`}
+                cx={x}
+                cy={y}
+                r={i % 3 === 0 ? 3.6 : 2.3}
+                style={{ animationDelay: `${0.45 + i * 0.07}s` }}
+              />
+            ))}
+          </g>
+          <circle className="m-hero-packet" r="2.8" />
+          <circle className="m-hero-packet alt" r="2.4" />
+        </svg>
+
         <div className="m-hero-inner">
           <div className="m-status m-fade-up">
             <span className="m-status-dot" />
             {t.hero.status}
           </div>
-          <br />
           <div className="m-hero-brand m-fade-up m-fade-up-2">AI PROFIT FLOW</div>
           <h1 className="m-fade-up m-fade-up-3">
             {t.hero.titleLine1}
             <br />
-            <span className="m-accent">{t.hero.titleLine2}</span>
+            <span className="m-hero-title-shine">{t.hero.titleLine2}</span>
           </h1>
-          <p className="m-fade-up m-fade-up-3">
-            {t.hero.subtitle}
-          </p>
-          <button type="button" className="m-cta m-fade-up m-fade-up-4" onClick={() => go('m-phone-form')}>
-            {t.hero.cta} <ArrowRight size={18} />
-          </button>
-          <div className="m-social-row m-fade-up m-fade-up-4">
-            {SOCIAL.map((s) => (
-              <a key={s.id} className="m-social-chip" href={s.href} target="_blank" rel="noopener noreferrer">
-                <span style={{ color: s.color }}>
-                  <SocialGlyph id={s.id} size={18} />
-                </span>
-                {s.label}
-              </a>
-            ))}
+          <p className="m-hero-lead m-fade-up m-fade-up-3">{t.hero.subtitle}</p>
+
+          <div className="m-hero-actions m-fade-up m-fade-up-4">
+            <button type="button" className="m-cta m-cta--hero" onClick={() => go('m-phone-form')}>
+              {t.hero.cta}
+              <ArrowRight size={18} strokeWidth={2.5} />
+            </button>
+            <div className="m-hero-social">
+              {SOCIAL.map((s) => (
+                <a
+                  key={s.id}
+                  className="m-hero-social-btn"
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ '--social-accent': s.color } as React.CSSProperties}
+                >
+                  <span className="m-hero-social-icon">
+                    <SocialGlyph id={s.id} size={16} />
+                  </span>
+                  <span className="m-hero-social-label">{s.label}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -898,18 +964,7 @@ const MobileLanding: React.FC = () => {
       </nav>
 
       {/* FAQ FAB */}
-      <div
-        style={{
-          position: 'fixed',
-          right: 14,
-          bottom: 'calc(64px + env(safe-area-inset-bottom, 0px) + 14px)',
-          zIndex: 58,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-end',
-          gap: 10,
-        }}
-      >
+      <div className="m-faq-fab">
         {faqOpen && (
           <div
             className="m-card"
@@ -985,37 +1040,14 @@ const MobileLanding: React.FC = () => {
             </div>
           </div>
         )}
-        {!faqOpen && (
-          <div
-            style={{
-              background: 'linear-gradient(90deg,#06b6d4,#2563eb)',
-              color: '#000',
-              fontSize: 10,
-              fontWeight: 900,
-              padding: '6px 12px',
-              borderRadius: 999,
-            }}
-          >
-            {t.faq.haveQuestions}
-          </div>
-        )}
+        {!faqOpen && <div className="m-faq-fab-hint">{t.faq.haveQuestions}</div>}
         <button
           type="button"
+          className="m-faq-fab-btn"
           aria-label={faqOpen ? t.faq.closeAria : t.faq.openAria}
           onClick={() => setFaqOpen((v) => !v)}
-          style={{
-            width: 72,
-            height: 72,
-            borderRadius: '50%',
-            border: '2px solid rgba(34,211,238,0.4)',
-            background: '#0a0a0c',
-            color: '#22d3ee',
-            display: 'grid',
-            placeItems: 'center',
-            boxShadow: '0 10px 30px rgba(34,211,238,0.25)',
-          }}
         >
-          {faqOpen ? <X size={24} /> : <Cpu className="animate-ai-icon" size={28} />}
+          {faqOpen ? <X size={22} /> : <Cpu className="animate-ai-icon" size={26} />}
         </button>
       </div>
 
