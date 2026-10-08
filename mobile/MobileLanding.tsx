@@ -36,6 +36,7 @@ import { useI18n } from '../i18n';
 import LanguageSwitcher from '../i18n/LanguageSwitcher';
 import { assetUrl } from '../assetUrl';
 import { publishedArticles } from '../content/articles';
+import { sendLead } from '../formApi';
 import './mobile.css';
 
 const SOCIAL = [
@@ -355,13 +356,7 @@ const MobileLanding: React.FC = () => {
     }
     setSubmitting(true);
     try {
-      const response = await fetch('/api/send-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: formName.trim(), phone: formPhone.trim() }),
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || t.forms.sendError);
+      await sendLead({ name: formName.trim(), phone: formPhone.trim() });
       alert(t.forms.thankYou);
       setFormName('');
       setFormPhone('');
@@ -385,17 +380,11 @@ const MobileLanding: React.FC = () => {
     }
     setSvcSending(true);
     try {
-      const response = await fetch('/api/send-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: svcName.trim(),
-          phone: svcPhone.trim(),
-          service: service.title,
-        }),
+      await sendLead({
+        name: svcName.trim(),
+        phone: svcPhone.trim(),
+        service: service.title,
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || t.forms.sendError);
       setSvcSent(true);
     } catch (err) {
       alert(`❌ ${t.forms.sendError}: ${err instanceof Error ? err.message : String(err)}`);

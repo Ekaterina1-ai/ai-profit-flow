@@ -42,6 +42,7 @@ import { useI18n } from './i18n';
 import LanguageSwitcher from './i18n/LanguageSwitcher';
 import { assetUrl } from './assetUrl';
 import { publishedArticles } from './content/articles';
+import { sendLead } from './formApi';
 
 const SOCIAL_LINKS = [
   {
@@ -530,17 +531,11 @@ const ServiceModal: React.FC<{ service: ServiceItem | null, onClose: () => void 
 
     setSubmitting(true);
     try {
-      const response = await fetch('/api/send-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name.trim(),
-          phone: phone.trim(),
-          service: service.title,
-        }),
+      await sendLead({
+        name: name.trim(),
+        phone: phone.trim(),
+        service: service.title,
       });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || t.forms.sendError);
       setSent(true);
     } catch (err) {
       alert(`❌ Ошибка: ${err instanceof Error ? err.message : String(err)}`);
@@ -1085,31 +1080,13 @@ const App: React.FC = () => {
 
     setIsSubmitting(true);
     try {
-      console.log('Sending application:', { name: formName, phone: formPhone });
-      
-      const response = await fetch('/api/send-application', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formName,
-          phone: formPhone
-        }),
+      await sendLead({
+        name: formName.trim(),
+        phone: formPhone.trim(),
       });
-
-      console.log('Server response:', response.status, response.statusText);
-
-      const data = await response.json();
-      console.log('Response data:', data);
-
-      if (response.ok) {
-        alert(t.forms.thankYou);
-        setFormName('');
-        setFormPhone('');
-      } else {
-        throw new Error(data.error || t.forms.sendError);
-      }
+      alert(t.forms.thankYou);
+      setFormName('');
+      setFormPhone('');
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : String(err);
       console.error('Full error:', err);
