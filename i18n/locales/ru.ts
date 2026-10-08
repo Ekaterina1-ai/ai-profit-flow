@@ -2,6 +2,7 @@ const messages = {
   nav: {
     solutions: 'Решения',
     cases: 'Кейсы',
+    articles: 'Статьи',
     contacts: 'Контакты',
     consultation: 'Консультация',
     writeUs: 'Написать нам',
@@ -85,6 +86,14 @@ const messages = {
     productUi: 'Интерфейс продукта',
     watchPresentation: 'Смотреть презентацию',
     sitePrefix: 'Сайт',
+  },
+  articles: {
+    title: 'Статьи',
+    subtitle: 'Практические материалы об ИИ, автоматизации и росте бизнеса без лишней теории',
+    read: 'Читать',
+    hide: 'Свернуть',
+    minutes: 'мин',
+    empty: 'Скоро здесь появятся новые материалы',
   },
   experts: {
     title: 'Наши эксперты',
@@ -389,6 +398,15 @@ const messages = {
       ],
     },
   ],
+  articleItems: [] as {
+    id: number;
+    category: string;
+    title: string;
+    excerpt: string;
+    readTime: string;
+    date: string;
+    body: string;
+  }[],
   expertItems: [
     {
       id: 1,

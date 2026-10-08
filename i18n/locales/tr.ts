@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Çözümler',
     cases: 'Projeler',
+    articles: 'Makaleler',
     contacts: 'İletişim',
     consultation: 'Danışmanlık',
     writeUs: 'Bize yazın',
@@ -92,6 +93,15 @@ const messages = {
     watchPresentation: 'Sunumu izle',
     sitePrefix: 'Site',
   },
+  articles: {
+    title: 'Makaleler',
+    subtitle: 'Yapay zeka, otomasyon ve büyüme hakkında pratik içerikler',
+    read: 'Oku',
+    hide: 'Daralt',
+    minutes: 'dk',
+    empty: 'Yakında burada yeni içerikler görünecek',
+  },
+
   experts: {
     title: 'Uzmanlarımız',
     subtitle: 'Yapay zeka ve otomasyon alanında profesyonel ekip',
@@ -396,6 +406,8 @@ const messages = {
       ],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

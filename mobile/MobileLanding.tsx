@@ -28,9 +28,14 @@ import {
   X,
   Zap,
   Palmtree,
+  Lightbulb,
+  Bot,
+  BookOpen,
 } from 'lucide-react';
 import { useI18n } from '../i18n';
 import LanguageSwitcher from '../i18n/LanguageSwitcher';
+import { assetUrl } from '../assetUrl';
+import { publishedArticles } from '../content/articles';
 import './mobile.css';
 
 const SOCIAL = [
@@ -149,10 +154,10 @@ const CASE_META = [
     id: 1,
     icon: <Users size={18} />,
     screenshots: [
-      { src: '/projects/hr/site-1.jpg' },
-      { src: '/projects/hr/site-2.jpg' },
-      { src: '/projects/hr/hr-1.jpg' },
-      { src: '/projects/hr/hr-2.jpg' },
+      { src: assetUrl('/projects/hr/site-1.jpg') },
+      { src: assetUrl('/projects/hr/site-2.jpg') },
+      { src: assetUrl('/projects/hr/hr-1.jpg') },
+      { src: assetUrl('/projects/hr/hr-2.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/3j427tx96gwq0g',
     siteUrl: 'https://кадроаи.рф/',
@@ -162,8 +167,8 @@ const CASE_META = [
     id: 2,
     icon: <Cpu size={18} />,
     screenshots: [
-      { src: '/projects/logist/site-1.jpg' },
-      { src: '/projects/logist/site-2.jpg' },
+      { src: assetUrl('/projects/logist/site-1.jpg') },
+      { src: assetUrl('/projects/logist/site-2.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/lcj6dm9UTgckiA',
     siteUrl: 'https://24логист.рф/',
@@ -173,9 +178,9 @@ const CASE_META = [
     id: 3,
     icon: <ShoppingBag size={18} />,
     screenshots: [
-      { src: '/projects/zakup/ui-1.jpg' },
-      { src: '/projects/zakup/ui-2.jpg' },
-      { src: '/projects/zakup/zakup-1.jpg' },
+      { src: assetUrl('/projects/zakup/ui-1.jpg') },
+      { src: assetUrl('/projects/zakup/ui-2.jpg') },
+      { src: assetUrl('/projects/zakup/zakup-1.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/mQ94_XL-O9_59g',
   },
@@ -183,10 +188,10 @@ const CASE_META = [
     id: 4,
     icon: <Sparkles size={18} />,
     screenshots: [
-      { src: '/projects/beauty/web-landing.jpg' },
-      { src: '/projects/beauty/web-services.jpg' },
-      { src: '/projects/beauty/mobile.jpg' },
-      { src: '/projects/beauty/cabinet.jpg' },
+      { src: assetUrl('/projects/beauty/web-landing.jpg') },
+      { src: assetUrl('/projects/beauty/web-services.jpg') },
+      { src: assetUrl('/projects/beauty/mobile.jpg') },
+      { src: assetUrl('/projects/beauty/cabinet.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/bXqPoRRlIP0r_Q',
     siteUrl: 'https://норма-тела.рф/',
@@ -203,18 +208,35 @@ type Expert = {
   fullDesc: string;
 };
 
+type Article = {
+  id: number;
+  category: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  date: string;
+  body: string;
+  icon: React.ReactNode;
+};
+
+const ARTICLE_ICONS = [
+  <Lightbulb size={18} className="text-cyan-400" />,
+  <Users size={18} className="text-blue-400" />,
+  <Bot size={18} className="text-indigo-400" />,
+];
+
 const EXPERT_META = [
   {
     id: 1,
-    photo: '/info/Екатерина.jpg',
+    photo: assetUrl('/info/Екатерина.jpg'),
   },
   {
     id: 2,
-    photo: '/info/Даша.jpg',
+    photo: assetUrl('/info/Даша.jpg'),
   },
   {
     id: 3,
-    photo: '/info/Евгения.png',
+    photo: assetUrl('/info/Евгения.png'),
   },
 ];
 
@@ -252,9 +274,18 @@ const MobileLanding: React.FC = () => {
       })),
     [t],
   );
+  const articles = useMemo<Article[]>(
+    () =>
+      publishedArticles.map((item, idx) => ({
+        ...item,
+        icon: ARTICLE_ICONS[idx % ARTICLE_ICONS.length],
+      })),
+    [],
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [showAllServices, setShowAllServices] = useState(false);
   const [expandedCase, setExpandedCase] = useState<number | null>(null);
+  const [expandedArticle, setExpandedArticle] = useState<number | null>(null);
   const [serviceId, setServiceId] = useState<number | null>(null);
   const [expertId, setExpertId] = useState<number | null>(null);
   const [faqOpen, setFaqOpen] = useState(false);
@@ -409,6 +440,9 @@ const MobileLanding: React.FC = () => {
         </button>
         <button type="button" className="m-drawer-link" onClick={() => go('m-cases')}>
           {t.cases.title}
+        </button>
+        <button type="button" className="m-drawer-link" onClick={() => go('m-articles')}>
+          {t.nav.articles}
         </button>
         <button type="button" className="m-drawer-link" onClick={() => go('m-experts')}>
           {t.experts.title}
@@ -627,6 +661,72 @@ const MobileLanding: React.FC = () => {
             </div>
           );
         })}
+      </section>
+
+      {/* Articles */}
+      <section id="m-articles" className="m-section">
+        <h2 className="m-section-title">{t.articles.title}</h2>
+        <p className="m-section-sub">{t.articles.subtitle}</p>
+        <div className="m-rule" />
+        {articles.length > 0 ? (
+          articles.map((item) => {
+            const open = expandedArticle === item.id;
+            return (
+              <article key={item.id} className={`m-article${open ? ' is-open' : ''}`}>
+                <button
+                  type="button"
+                  className="m-article-head"
+                  aria-expanded={open}
+                  onClick={() => setExpandedArticle(open ? null : item.id)}
+                >
+                  <div className="m-article-icon">{item.icon}</div>
+                  <div className="m-article-meta">
+                    <span className="m-article-cat">{item.category}</span>
+                    <h3>{item.title}</h3>
+                    <p className="m-article-excerpt">{item.excerpt}</p>
+                    <div className="m-article-stats">
+                      <span>
+                        <Clock size={12} /> {item.readTime} {t.articles.minutes}
+                      </span>
+                      <span>{item.date}</span>
+                    </div>
+                  </div>
+                  <ChevronDown
+                    size={18}
+                    color="#67e8f9"
+                    className="m-article-chevron"
+                    style={{ transform: open ? 'rotate(180deg)' : undefined }}
+                  />
+                </button>
+                {open && (
+                  <div className="m-article-body">
+                    <div className="m-article-body-text">{item.body}</div>
+                    <button
+                      type="button"
+                      className="m-article-collapse"
+                      onClick={() => setExpandedArticle(null)}
+                    >
+                      {t.articles.hide}
+                    </button>
+                  </div>
+                )}
+                {!open && (
+                  <button
+                    type="button"
+                    className="m-article-read"
+                    onClick={() => setExpandedArticle(item.id)}
+                  >
+                    <BookOpen size={14} />
+                    {t.articles.read}
+                    <ArrowRight size={14} />
+                  </button>
+                )}
+              </article>
+            );
+          })
+        ) : (
+          <p className="m-articles-empty">{t.articles.empty}</p>
+        )}
       </section>
 
       {/* Experts */}

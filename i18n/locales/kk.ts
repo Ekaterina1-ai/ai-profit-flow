@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Шешімдер',
     cases: 'Жобалар',
+    articles: 'Мақалалар',
     contacts: 'Байланыс',
     consultation: 'Кеңес',
     writeUs: 'Бізге жазыңыз',
@@ -92,6 +93,15 @@ const messages = {
     watchPresentation: 'Презентацияны көру',
     sitePrefix: 'Сайт',
   },
+  articles: {
+    title: 'Мақалалар',
+    subtitle: 'AI, автоматтандыру және бизнес өсуі туралы практикалық материалдар',
+    read: 'Оқу',
+    hide: 'Жию',
+    minutes: 'мин',
+    empty: 'Жақында мұнда жаңа материалдар пайда болады',
+  },
+
   experts: {
     title: 'Біздің сарапшылар',
     subtitle: 'ЖИ және автоматтандыру саласындағы кәсіби команда',
@@ -396,6 +406,8 @@ const messages = {
       ],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Soluções',
     cases: 'Cases',
+    articles: 'Artigos',
     contacts: 'Contatos',
     consultation: 'Consulta',
     writeUs: 'Escreva para nós',
@@ -92,6 +93,15 @@ const messages = {
     watchPresentation: 'Ver apresentação',
     sitePrefix: 'Site',
   },
+  articles: {
+    title: 'Artigos',
+    subtitle: 'Materiais práticos sobre IA, automação e crescimento sem teoria vazia',
+    read: 'Ler',
+    hide: 'Recolher',
+    minutes: 'min',
+    empty: 'Em breve novos materiais aparecerão aqui',
+  },
+
   experts: {
     title: 'Nossos Especialistas',
     subtitle: 'Uma equipe de profissionais em IA e automação',
@@ -396,6 +406,8 @@ const messages = {
       ],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

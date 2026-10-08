@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => {
     return {
+      // Project Pages: https://<user>.github.io/ai-profit-flow/
+      base: '/ai-profit-flow/',
       server: {
         port: 3000,
         host: '0.0.0.0',

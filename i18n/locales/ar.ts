@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'الحلول',
     cases: 'دراسات الحالة',
+    articles: 'مقالات',
     contacts: 'جهات الاتصال',
     consultation: 'استشارة',
     writeUs: 'راسلونا',
@@ -88,6 +89,15 @@ const messages = {
     watchPresentation: 'مشاهدة العرض',
     sitePrefix: 'الموقع',
   },
+  articles: {
+    title: 'مقالات',
+    subtitle: 'مواد عملية عن الذكاء الاصطناعي والأتمتة ونمو الأعمال دون نظريات فارغة',
+    read: 'اقرأ',
+    hide: 'طي',
+    minutes: 'د',
+    empty: 'ستظهر هنا مواد جديدة قريباً',
+  },
+
   experts: {
     title: 'خبراؤنا',
     subtitle: 'فريق من المحترفين في مجال AI والأتمتة',
@@ -391,6 +401,8 @@ const messages = {
       ],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

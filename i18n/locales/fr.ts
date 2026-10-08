@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Offres',
     cases: 'Cas clients',
+    articles: 'Articles',
     contacts: 'Coordonnées',
     consultation: 'Conseil',
     writeUs: 'Nous écrire',
@@ -88,6 +89,15 @@ const messages = {
     watchPresentation: 'Voir la présentation',
     sitePrefix: 'Site web',
   },
+  articles: {
+    title: 'Articles',
+    subtitle: 'Des notes pratiques sur l\'IA, l\'automatisation et la croissance sans théorie inutile',
+    read: 'Lire',
+    hide: 'Réduire',
+    minutes: 'min',
+    empty: 'De nouveaux contenus arriveront bientôt',
+  },
+
   experts: {
     title: 'Nos expertes',
     subtitle: 'Une équipe de professionnelles de l’IA et de l’automatisation',
@@ -382,6 +392,8 @@ const messages = {
       screenshotsAlt: ['Site du salon Norma Tela', 'Section de la plateforme beauté', 'Version mobile', 'Espace client'],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

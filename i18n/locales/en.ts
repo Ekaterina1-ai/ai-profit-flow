@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Solutions',
     cases: 'Cases',
+    articles: 'Articles',
     contacts: 'Contacts',
     consultation: 'Consultation',
     writeUs: 'Write to us',
@@ -88,6 +89,15 @@ const messages = {
     watchPresentation: 'Watch presentation',
     sitePrefix: 'Site',
   },
+  articles: {
+    title: 'Articles',
+    subtitle: 'Practical notes on AI, automation, and business growth without empty theory',
+    read: 'Read',
+    hide: 'Collapse',
+    minutes: 'min',
+    empty: 'New materials will appear here soon',
+  },
+
   experts: {
     title: 'Our Experts',
     subtitle: 'A team of professionals in AI and automation',
@@ -382,6 +392,8 @@ const messages = {
       screenshotsAlt: ['Norma Tela salon website', 'Beauty platform section', 'Mobile version', 'Client account'],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

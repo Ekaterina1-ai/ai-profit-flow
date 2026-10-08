@@ -32,12 +32,16 @@ import {
   FileCheck,
   ChevronDown,
   HelpCircle,
-  Send
+  Send,
+  Lightbulb,
+  Bot
 } from 'lucide-react';
 import { useIsMobile } from './useIsMobile';
 import MobileLanding from './mobile/MobileLanding';
 import { useI18n } from './i18n';
 import LanguageSwitcher from './i18n/LanguageSwitcher';
+import { assetUrl } from './assetUrl';
+import { publishedArticles } from './content/articles';
 
 const SOCIAL_LINKS = [
   {
@@ -218,10 +222,10 @@ const CASE_META = [
     id: 1,
     icon: <Users />,
     screenshots: [
-      { src: '/projects/hr/site-1.jpg' },
-      { src: '/projects/hr/site-2.jpg' },
-      { src: '/projects/hr/hr-1.jpg' },
-      { src: '/projects/hr/hr-2.jpg' },
+      { src: assetUrl('/projects/hr/site-1.jpg') },
+      { src: assetUrl('/projects/hr/site-2.jpg') },
+      { src: assetUrl('/projects/hr/hr-1.jpg') },
+      { src: assetUrl('/projects/hr/hr-2.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/3j427tx96gwq0g',
     siteUrl: 'https://кадроаи.рф/',
@@ -231,8 +235,8 @@ const CASE_META = [
     id: 2,
     icon: <Cpu />,
     screenshots: [
-      { src: '/projects/logist/site-1.jpg' },
-      { src: '/projects/logist/site-2.jpg' },
+      { src: assetUrl('/projects/logist/site-1.jpg') },
+      { src: assetUrl('/projects/logist/site-2.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/lcj6dm9UTgckiA',
     siteUrl: 'https://24логист.рф/',
@@ -242,9 +246,9 @@ const CASE_META = [
     id: 3,
     icon: <ShoppingBag />,
     screenshots: [
-      { src: '/projects/zakup/ui-1.jpg' },
-      { src: '/projects/zakup/ui-2.jpg' },
-      { src: '/projects/zakup/zakup-1.jpg' },
+      { src: assetUrl('/projects/zakup/ui-1.jpg') },
+      { src: assetUrl('/projects/zakup/ui-2.jpg') },
+      { src: assetUrl('/projects/zakup/zakup-1.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/mQ94_XL-O9_59g',
   },
@@ -252,10 +256,10 @@ const CASE_META = [
     id: 4,
     icon: <Sparkles />,
     screenshots: [
-      { src: '/projects/beauty/web-landing.jpg' },
-      { src: '/projects/beauty/web-services.jpg' },
-      { src: '/projects/beauty/mobile.jpg' },
-      { src: '/projects/beauty/cabinet.jpg' },
+      { src: assetUrl('/projects/beauty/web-landing.jpg') },
+      { src: assetUrl('/projects/beauty/web-services.jpg') },
+      { src: assetUrl('/projects/beauty/mobile.jpg') },
+      { src: assetUrl('/projects/beauty/cabinet.jpg') },
     ],
     presentationUrl: 'https://disk.yandex.ru/i/bXqPoRRlIP0r_Q',
     siteUrl: 'https://норма-тела.рф/',
@@ -273,12 +277,27 @@ type ExpertItem = {
   fullDesc: string;
 };
 
-const EXPERT_META = [
-  { id: 1, photo: '/info/Екатерина.jpg' },
-  { id: 2, photo: '/info/Даша.jpg' },
-  { id: 3, photo: '/info/Евгения.png' },
-];
+type ArticleItem = {
+  id: number;
+  category: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  date: string;
+  body: string;
+  icon: React.ReactNode;
+};
 
+const EXPERT_META = [
+  { id: 1, photo: assetUrl('/info/Екатерина.jpg') },
+  { id: 2, photo: assetUrl('/info/Даша.jpg') },
+  { id: 3, photo: assetUrl('/info/Евгения.png') },
+];
+const ARTICLE_ICONS = [
+  <Lightbulb className="text-cyan-400" />,
+  <Users className="text-blue-400" />,
+  <Bot className="text-indigo-400" />,
+] as const;
 const AUTOMATION_HELP_ICONS = [<Clock />, <ClipboardCheck />, <Target />] as const;
 const INCOME_ICONS = [<Cpu />, <Zap />, <TrendingUp />, <BarChart3 />] as const;
 const AI_INTEGRATION_ICONS = [<Search />, <FileCheck />, <Cpu />, <Academy />, <Headset />] as const;
@@ -684,6 +703,87 @@ const ExpertModal: React.FC<{ expert: ExpertItem | null, onClose: () => void }> 
   );
 };
 
+const ArticleCard: React.FC<{ article: ArticleItem; onClick: () => void }> = ({ article, onClick }) => {
+  const { t } = useI18n();
+  return (
+    <article
+      onClick={onClick}
+      className="glass-card group h-full p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] border-white/5 sm:hover:border-cyan-500/40 cursor-pointer sm:hover:-translate-y-1.5 transition-all flex flex-col text-left"
+    >
+      <div className="flex items-center justify-between gap-3 mb-6">
+        <span className="inline-flex items-center rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">
+          {article.category}
+        </span>
+        <div className="w-11 h-11 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center sm:group-hover:border-cyan-400/50 sm:group-hover:bg-cyan-500/10 transition-colors">
+          {React.cloneElement(article.icon as React.ReactElement<any>, { size: 20, strokeWidth: 1.75 })}
+        </div>
+      </div>
+      <h3 className="text-xl sm:text-2xl font-heading font-bold leading-snug mb-4 sm:group-hover:text-cyan-300 transition-colors">
+        {article.title}
+      </h3>
+      <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1">{article.excerpt}</p>
+      <div className="mt-auto flex items-center justify-between gap-3 pt-2 border-t border-white/5">
+        <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-wider text-gray-500">
+          <span className="inline-flex items-center gap-1.5">
+            <Clock size={13} className="text-cyan-400/80" />
+            {article.readTime} {t.articles.minutes}
+          </span>
+          <span className="text-white/15">·</span>
+          <span>{article.date}</span>
+        </div>
+        <span className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-cyan-400 sm:group-hover:text-cyan-300 transition-colors">
+          {t.articles.read} <ArrowRight size={14} />
+        </span>
+      </div>
+    </article>
+  );
+};
+
+const ArticleModal: React.FC<{ article: ArticleItem | null; onClose: () => void }> = ({ article, onClose }) => {
+  const { t } = useI18n();
+  if (!article) return null;
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-backdrop animate-in fade-in duration-300"
+      onClick={onClose}
+    >
+      <div
+        className="glass-card max-w-3xl w-full max-h-[90vh] overflow-y-auto p-7 sm:p-10 md:p-12 rounded-[2.5rem] relative shadow-[0_0_80px_rgba(41,221,218,0.2)] border-cyan-500/40"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 sm:top-8 sm:right-8 text-gray-500 hover:text-white transition-colors"
+          aria-label={t.common.close}
+        >
+          <X size={26} />
+        </button>
+        <div className="pr-10 mb-6">
+          <div className="flex flex-wrap items-center gap-3 mb-5">
+            <span className="inline-flex items-center rounded-full border border-cyan-500/25 bg-cyan-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">
+              {article.category}
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500 inline-flex items-center gap-1.5">
+              <Clock size={13} className="text-cyan-400/80" />
+              {article.readTime} {t.articles.minutes}
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">{article.date}</span>
+          </div>
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center shrink-0">
+              {React.cloneElement(article.icon as React.ReactElement<any>, { size: 24, strokeWidth: 1.75 })}
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold leading-tight">{article.title}</h2>
+          </div>
+        </div>
+        <div className="text-gray-300 text-base sm:text-lg leading-relaxed whitespace-pre-line border-t border-white/10 pt-6">
+          {article.body}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 
 const SupportFAQ: React.FC = () => {
   const { t } = useI18n();
@@ -819,6 +919,7 @@ const App: React.FC = () => {
   const [expandedCaseId, setExpandedCaseId] = useState<number | null>(null);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedExpert, setSelectedExpert] = useState<ExpertItem | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<ArticleItem | null>(null);
   const [showPlan, setShowPlan] = useState(false);
   const [formName, setFormName] = useState('');
   const isMobile = useIsMobile();
@@ -845,6 +946,10 @@ const App: React.FC = () => {
     })),
   }));
   const experts = EXPERT_META.map((item, idx) => ({ ...item, ...t.expertItems[idx] }));
+  const articles = publishedArticles.map((item, idx) => ({
+    ...item,
+    icon: ARTICLE_ICONS[idx % ARTICLE_ICONS.length],
+  }));
 
   const toggleSection = (id: string) => {
     setSectionOpen(prev => ({ ...prev, [id]: !prev[id] }));
@@ -1023,6 +1128,7 @@ const App: React.FC = () => {
     <div className="bg-[#07090f] min-h-screen selection:bg-cyan-500/30">
       <ServiceModal service={selectedService} onClose={() => setSelectedService(null)} />
       <ExpertModal expert={selectedExpert} onClose={() => setSelectedExpert(null)} />
+      <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
       
       {/* FLOATING AI ASSISTANT */}
       <SupportFAQ />
@@ -1035,9 +1141,10 @@ const App: React.FC = () => {
             AI PROFIT FLOW
           </div>
         </div>
-        <div className="hidden md:flex gap-10 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">
+        <div className="hidden md:flex gap-8 lg:gap-10 text-xs font-black tracking-[0.2em] text-gray-400 uppercase">
           <a href="#solutions" className="hover:text-cyan-400 transition-colors">{t.nav.solutions}</a>
           <a href="#cases" className="hover:text-cyan-400 transition-colors">{t.nav.cases}</a>
+          <a href="#articles" className="hover:text-cyan-400 transition-colors">{t.nav.articles}</a>
           <a href="#contacts" className="hover:text-cyan-400 transition-colors">{t.nav.contacts}</a>
         </div>
         <div className="flex items-center gap-3">
@@ -1065,6 +1172,7 @@ const App: React.FC = () => {
             <div className="flex flex-col gap-4 text-lg">
               <a href="#solutions" className="font-black text-white">{t.nav.solutions}</a>
               <a href="#cases" className="font-black text-white">{t.nav.cases}</a>
+              <a href="#articles" className="font-black text-white">{t.nav.articles}</a>
               <a href="#contacts" className="font-black text-white">{t.nav.contacts}</a>
               <div className="mt-2 text-[11px] uppercase tracking-widest text-gray-500 font-black">{t.nav.writeUs}</div>
               <LanguageSwitcher compact className="self-start" />
@@ -1246,6 +1354,24 @@ const App: React.FC = () => {
       ) : (
         renderCases()
       )}
+
+      {/* ARTICLES */}
+      <section id="articles" className="py-12 sm:py-20 md:py-28 lg:py-32 bg-black/30 border-y border-white/5 scroll-mt-20">
+        <div className="container mx-auto px-6">
+          <SectionTitle title={t.articles.title} subtitle={t.articles.subtitle} />
+          {articles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+              {articles.map((article) => (
+                <ArticleCard key={article.id} article={article} onClick={() => setSelectedArticle(article)} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 text-sm max-w-xl mx-auto -mt-4">
+              {t.articles.empty}
+            </p>
+          )}
+        </div>
+      </section>
 
       {/* EXPERTS */}
       <section id="experts" className="py-12 sm:py-20 md:py-28 lg:py-32 container mx-auto px-6 scroll-mt-20">

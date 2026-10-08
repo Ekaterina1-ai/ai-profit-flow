@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Чечимдер',
     cases: 'Кейстер',
+    articles: 'Макалалар',
     contacts: 'Байланыштар',
     consultation: 'Консультация',
     writeUs: 'Бизге жазыңыз',
@@ -88,6 +89,15 @@ const messages = {
     watchPresentation: 'Презентацияны көрүү',
     sitePrefix: 'Сайт',
   },
+  articles: {
+    title: 'Макалалар',
+    subtitle: 'AI, автоматташтыруу жана бизнес өсүшү жөнүндө практикалык материалдар',
+    read: 'Окуу',
+    hide: 'Жыйыштыруу',
+    minutes: 'мүн',
+    empty: 'Жакында бул жерде жаңы материалдар чыгат',
+  },
+
   experts: {
     title: 'Биздин эксперттер',
     subtitle: 'AI жана автоматташтыруу тармагындагы профессионалдар командасы',
@@ -391,6 +401,8 @@ const messages = {
       ],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

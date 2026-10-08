@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: 'Yechimlar',
     cases: 'Keyslar',
+    articles: 'Maqolalar',
     contacts: 'Kontaktlar',
     consultation: 'Konsultatsiya',
     writeUs: 'Bizga yozing',
@@ -88,6 +89,15 @@ const messages = {
     watchPresentation: 'Taqdimotni ko‘rish',
     sitePrefix: 'Sayt',
   },
+  articles: {
+    title: 'Maqolalar',
+    subtitle: 'AI, avtomatlashtirish va biznes o\'sishi haqida amaliy materiallar',
+    read: 'O\'qish',
+    hide: 'Yig\'ish',
+    minutes: 'daq',
+    empty: 'Tez orada bu yerda yangi materiallar paydo bo\'ladi',
+  },
+
   experts: {
     title: 'Bizning ekspertlar',
     subtitle: 'AI va avtomatlashtirish bo‘yicha professionallar jamoasi',
@@ -391,6 +401,8 @@ const messages = {
       ],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,

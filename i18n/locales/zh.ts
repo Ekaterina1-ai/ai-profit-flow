@@ -4,6 +4,7 @@ const messages = {
   nav: {
     solutions: '解决方案',
     cases: '案例',
+    articles: '文章',
     contacts: '联系方式',
     consultation: '咨询',
     writeUs: '联系我们',
@@ -88,6 +89,15 @@ const messages = {
     watchPresentation: '观看演示',
     sitePrefix: '网站',
   },
+  articles: {
+    title: '文章',
+    subtitle: '关于人工智能、自动化与业务增长的实用内容，没有空泛理论',
+    read: '阅读',
+    hide: '收起',
+    minutes: '分钟',
+    empty: '新内容即将发布',
+  },
+
   experts: {
     title: '我们的专家',
     subtitle: 'AI 与自动化领域的专业团队',
@@ -382,6 +392,8 @@ const messages = {
       screenshotsAlt: ['Norma Tela 沙龙网站', '美业平台板块', '移动版本', '客户账户'],
     },
   ],
+  articleItems: [],
+
   expertItems: [
     {
       id: 1,
