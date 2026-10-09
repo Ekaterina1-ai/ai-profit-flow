@@ -8,13 +8,23 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://aiprofitflow.ru/doc/privacy.html</loc>
+    <loc>https://aiprofitflow.ru/doc/privacy.pdf</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://aiprofitflow.ru/doc/consent.html</loc>
+    <loc>https://aiprofitflow.ru/doc/consent.pdf</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aiprofitflow.ru/doc/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://aiprofitflow.ru/doc/consent.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
   </url>
 </urlset>
