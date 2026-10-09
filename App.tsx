@@ -622,7 +622,7 @@ const ServiceModal: React.FC<{ service: ServiceItem | null, onClose: () => void 
               />
               <span>
                 {t.cta.agreePrefix}{' '}
-                <a href="/doc/Согласие.pdf" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">
+                <a href="/doc/consent.html" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">
                   {t.cta.agreeLink}
                 </a>
               </span>
@@ -1333,24 +1333,6 @@ const App: React.FC = () => {
         renderCases()
       )}
 
-      {/* ARTICLES */}
-      <section id="articles" className="py-12 sm:py-20 md:py-28 lg:py-32 bg-black/30 border-y border-white/5 scroll-mt-20">
-        <div className="container mx-auto px-6">
-          <SectionTitle title={t.articles.title} subtitle={t.articles.subtitle} />
-          {articles.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
-              {articles.map((article) => (
-                <ArticleCard key={article.id} article={article} onClick={() => setSelectedArticle(article)} />
-              ))}
-            </div>
-          ) : (
-            <p className="text-center text-gray-500 text-sm max-w-xl mx-auto -mt-4">
-              {t.articles.empty}
-            </p>
-          )}
-        </div>
-      </section>
-
       {/* EXPERTS */}
       <section id="experts" className="py-12 sm:py-20 md:py-28 lg:py-32 container mx-auto px-6 scroll-mt-20">
         <SectionTitle title={t.experts.title} subtitle={t.experts.subtitle} />
@@ -1458,7 +1440,7 @@ const App: React.FC = () => {
                       className="w-4 h-4 mt-1 accent-cyan-500" 
                     />
                     <span>
-                      {t.cta.agreePrefix} <a href="/doc/Согласие.pdf" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">{t.cta.agreeLink}</a>
+                      {t.cta.agreePrefix} <a href="/doc/consent.html" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">{t.cta.agreeLink}</a>
                     </span>
                   </div>
                   <button 
@@ -1477,6 +1459,24 @@ const App: React.FC = () => {
                 </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ARTICLES */}
+      <section id="articles" className="py-12 sm:py-20 md:py-28 lg:py-32 bg-black/30 border-y border-white/5 scroll-mt-20">
+        <div className="container mx-auto px-6">
+          <SectionTitle title={t.articles.title} subtitle={t.articles.subtitle} />
+          {articles.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
+              {articles.map((article) => (
+                <ArticleCard key={article.id} article={article} onClick={() => setSelectedArticle(article)} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 text-sm max-w-xl mx-auto -mt-4">
+              {t.articles.empty}
+            </p>
+          )}
         </div>
       </section>
 
@@ -1512,7 +1512,7 @@ const App: React.FC = () => {
             <div className="text-[10px] text-gray-800 mt-8">
               {t.footer.rights}
             </div>
-            <a href="/doc/Политика.pdf" target="_blank" className="text-[10px] text-gray-700 hover:text-cyan-400 transition-colors mt-2 inline-block">
+            <a href="/doc/privacy.html" target="_blank" className="text-[10px] text-gray-700 hover:text-cyan-400 transition-colors mt-2 inline-block">
               {t.footer.privacy}
             </a>
           </div>

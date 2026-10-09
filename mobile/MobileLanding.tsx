@@ -725,72 +725,6 @@ const MobileLanding: React.FC = () => {
         })}
       </section>
 
-      {/* Articles */}
-      <section id="m-articles" className="m-section">
-        <h2 className="m-section-title">{t.articles.title}</h2>
-        <p className="m-section-sub">{t.articles.subtitle}</p>
-        <div className="m-rule" />
-        {articles.length > 0 ? (
-          articles.map((item) => {
-            const open = expandedArticle === item.id;
-            return (
-              <article key={item.id} className={`m-article${open ? ' is-open' : ''}`}>
-                <button
-                  type="button"
-                  className="m-article-head"
-                  aria-expanded={open}
-                  onClick={() => setExpandedArticle(open ? null : item.id)}
-                >
-                  <div className="m-article-icon">{item.icon}</div>
-                  <div className="m-article-meta">
-                    <span className="m-article-cat">{item.category}</span>
-                    <h3>{item.title}</h3>
-                    <p className="m-article-excerpt">{item.excerpt}</p>
-                    <div className="m-article-stats">
-                      <span>
-                        <Clock size={12} /> {item.readTime} {t.articles.minutes}
-                      </span>
-                      <span>{item.date}</span>
-                    </div>
-                  </div>
-                  <ChevronDown
-                    size={18}
-                    color="#67e8f9"
-                    className="m-article-chevron"
-                    style={{ transform: open ? 'rotate(180deg)' : undefined }}
-                  />
-                </button>
-                {open && (
-                  <div className="m-article-body">
-                    <div className="m-article-body-text">{item.body}</div>
-                    <button
-                      type="button"
-                      className="m-article-collapse"
-                      onClick={() => setExpandedArticle(null)}
-                    >
-                      {t.articles.hide}
-                    </button>
-                  </div>
-                )}
-                {!open && (
-                  <button
-                    type="button"
-                    className="m-article-read"
-                    onClick={() => setExpandedArticle(item.id)}
-                  >
-                    <BookOpen size={14} />
-                    {t.articles.read}
-                    <ArrowRight size={14} />
-                  </button>
-                )}
-              </article>
-            );
-          })
-        ) : (
-          <p className="m-articles-empty">{t.articles.empty}</p>
-        )}
-      </section>
-
       {/* Experts */}
       <section id="m-experts" className="m-section" style={{ paddingLeft: 0, paddingRight: 0 }}>
         <div style={{ padding: '0 16px' }}>
@@ -882,7 +816,7 @@ const MobileLanding: React.FC = () => {
               <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
               <span>
                 {t.cta.agreePrefix}{' '}
-                <a href="/doc/Согласие.pdf" target="_blank" rel="noreferrer">
+                <a href="/doc/consent.html" target="_blank" rel="noreferrer">
                   {t.cta.agreeLink}
                 </a>
               </span>
@@ -905,6 +839,72 @@ const MobileLanding: React.FC = () => {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Articles */}
+      <section id="m-articles" className="m-section">
+        <h2 className="m-section-title">{t.articles.title}</h2>
+        <p className="m-section-sub">{t.articles.subtitle}</p>
+        <div className="m-rule" />
+        {articles.length > 0 ? (
+          articles.map((item) => {
+            const open = expandedArticle === item.id;
+            return (
+              <article key={item.id} className={`m-article${open ? ' is-open' : ''}`}>
+                <button
+                  type="button"
+                  className="m-article-head"
+                  aria-expanded={open}
+                  onClick={() => setExpandedArticle(open ? null : item.id)}
+                >
+                  <div className="m-article-icon">{item.icon}</div>
+                  <div className="m-article-meta">
+                    <span className="m-article-cat">{item.category}</span>
+                    <h3>{item.title}</h3>
+                    <p className="m-article-excerpt">{item.excerpt}</p>
+                    <div className="m-article-stats">
+                      <span>
+                        <Clock size={12} /> {item.readTime} {t.articles.minutes}
+                      </span>
+                      <span>{item.date}</span>
+                    </div>
+                  </div>
+                  <ChevronDown
+                    size={18}
+                    color="#67e8f9"
+                    className="m-article-chevron"
+                    style={{ transform: open ? 'rotate(180deg)' : undefined }}
+                  />
+                </button>
+                {open && (
+                  <div className="m-article-body">
+                    <div className="m-article-body-text">{item.body}</div>
+                    <button
+                      type="button"
+                      className="m-article-collapse"
+                      onClick={() => setExpandedArticle(null)}
+                    >
+                      {t.articles.hide}
+                    </button>
+                  </div>
+                )}
+                {!open && (
+                  <button
+                    type="button"
+                    className="m-article-read"
+                    onClick={() => setExpandedArticle(item.id)}
+                  >
+                    <BookOpen size={14} />
+                    {t.articles.read}
+                    <ArrowRight size={14} />
+                  </button>
+                )}
+              </article>
+            );
+          })
+        ) : (
+          <p className="m-articles-empty">{t.articles.empty}</p>
+        )}
       </section>
 
       {/* Footer */}
@@ -933,7 +933,7 @@ const MobileLanding: React.FC = () => {
           {t.footer.inn}
           <br />{t.footer.rights}
           <br />
-          <a href="/doc/Политика.pdf" target="_blank" rel="noreferrer" style={{ color: '#475569', display: 'inline' }}>
+          <a href="/doc/privacy.html" target="_blank" rel="noreferrer" style={{ color: '#475569', display: 'inline' }}>
             {t.footer.privacy}
           </a>
         </div>
@@ -1109,7 +1109,7 @@ const MobileLanding: React.FC = () => {
                   <input type="checkbox" checked={svcAgree} onChange={(e) => setSvcAgree(e.target.checked)} />
                   <span>
                     {t.cta.agreePrefix}{' '}
-                    <a href="/doc/Согласие.pdf" target="_blank" rel="noreferrer">
+                    <a href="/doc/consent.html" target="_blank" rel="noreferrer">
                       {t.cta.agreeLink}
                     </a>
                   </span>
