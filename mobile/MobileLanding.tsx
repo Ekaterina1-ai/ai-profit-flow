@@ -816,7 +816,7 @@ const MobileLanding: React.FC = () => {
               <input type="checkbox" checked={agree} onChange={(e) => setAgree(e.target.checked)} />
               <span>
                 {t.cta.agreePrefix}{' '}
-                <a href="/doc/consent.html" target="_blank" rel="noreferrer">
+                <a href="/doc/consent.pdf" target="_blank" rel="noreferrer">
                   {t.cta.agreeLink}
                 </a>
               </span>
@@ -933,7 +933,7 @@ const MobileLanding: React.FC = () => {
           {t.footer.inn}
           <br />{t.footer.rights}
           <br />
-          <a href="/doc/privacy.html" target="_blank" rel="noreferrer" style={{ color: '#475569', display: 'inline' }}>
+          <a href="/doc/privacy.pdf" target="_blank" rel="noreferrer" style={{ color: '#475569', display: 'inline' }}>
             {t.footer.privacy}
           </a>
         </div>
@@ -1109,7 +1109,7 @@ const MobileLanding: React.FC = () => {
                   <input type="checkbox" checked={svcAgree} onChange={(e) => setSvcAgree(e.target.checked)} />
                   <span>
                     {t.cta.agreePrefix}{' '}
-                    <a href="/doc/consent.html" target="_blank" rel="noreferrer">
+                    <a href="/doc/consent.pdf" target="_blank" rel="noreferrer">
                       {t.cta.agreeLink}
                     </a>
                   </span>

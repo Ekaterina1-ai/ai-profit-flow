@@ -622,7 +622,7 @@ const ServiceModal: React.FC<{ service: ServiceItem | null, onClose: () => void 
               />
               <span>
                 {t.cta.agreePrefix}{' '}
-                <a href="/doc/consent.html" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">
+                <a href="/doc/consent.pdf" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">
                   {t.cta.agreeLink}
                 </a>
               </span>
@@ -1440,7 +1440,7 @@ const App: React.FC = () => {
                       className="w-4 h-4 mt-1 accent-cyan-500" 
                     />
                     <span>
-                      {t.cta.agreePrefix} <a href="/doc/consent.html" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">{t.cta.agreeLink}</a>
+                      {t.cta.agreePrefix} <a href="/doc/consent.pdf" target="_blank" className="text-cyan-400 underline hover:text-cyan-300">{t.cta.agreeLink}</a>
                     </span>
                   </div>
                   <button 
@@ -1512,7 +1512,7 @@ const App: React.FC = () => {
             <div className="text-[10px] text-gray-800 mt-8">
               {t.footer.rights}
             </div>
-            <a href="/doc/privacy.html" target="_blank" className="text-[10px] text-gray-700 hover:text-cyan-400 transition-colors mt-2 inline-block">
+            <a href="/doc/privacy.pdf" target="_blank" className="text-[10px] text-gray-700 hover:text-cyan-400 transition-colors mt-2 inline-block">
               {t.footer.privacy}
             </a>
           </div>
