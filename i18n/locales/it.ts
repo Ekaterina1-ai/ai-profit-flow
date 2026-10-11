@@ -96,6 +96,7 @@ const messages = {
     hide: 'Comprimi',
     minutes: 'min',
     empty: 'Presto qui appariranno nuovi materiali',
+    all: 'Tutti gli articoli',
   },
 
   experts: {

@@ -96,6 +96,7 @@ const messages = {
     hide: 'Yig\'ish',
     minutes: 'daq',
     empty: 'Tez orada bu yerda yangi materiallar paydo bo\'ladi',
+    all: 'Barcha maqolalar',
   },
 
   experts: {

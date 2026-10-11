@@ -100,6 +100,7 @@ const messages = {
     hide: 'Recolher',
     minutes: 'min',
     empty: 'Em breve novos materiais aparecerão aqui',
+    all: 'Todos os artigos',
   },
 
   experts: {

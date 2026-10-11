@@ -96,6 +96,7 @@ const messages = {
     hide: 'Réduire',
     minutes: 'min',
     empty: 'De nouveaux contenus arriveront bientôt',
+    all: 'Tous les articles',
   },
 
   experts: {

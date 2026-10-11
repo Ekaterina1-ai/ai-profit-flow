@@ -9,7 +9,7 @@
     "start": "concurrently \"npm run dev\" \"npm run server\"",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist -m \"Deploy site update\""
+    "deploy": "npm run build && gh-pages -d dist --add -m \"Deploy site update\""
   },
   "dependencies": {
     "dotenv": "^16.0.3",

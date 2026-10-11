@@ -100,6 +100,7 @@ const messages = {
     hide: 'Daralt',
     minutes: 'dk',
     empty: 'Yakında burada yeni içerikler görünecek',
+    all: 'Tüm makaleler',
   },
 
   experts: {

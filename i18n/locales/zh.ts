@@ -96,6 +96,7 @@ const messages = {
     hide: '收起',
     minutes: '分钟',
     empty: '新内容即将发布',
+    all: '全部文章',
   },
 
   experts: {

@@ -96,6 +96,7 @@ const messages = {
     hide: 'Einklappen',
     minutes: 'Min',
     empty: 'Hier erscheinen bald neue Materialien',
+    all: 'Alle Artikel',
   },
 
   experts: {

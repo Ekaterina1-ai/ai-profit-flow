@@ -27,4 +27,24 @@
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
+  <url>
+    <loc>https://aiprofitflow.ru/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiprofitflow.ru/blog/ii-agenty-dlya-biznesa-v-2026-godu-chto-oni-umeyut-i-s-chego-nachat-vnedrenie.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiprofitflow.ru/blog/skolko-stoit-vnedrenie-ii-v-kompaniyu-iz-chego-skladyvaetsya-byudzhet-v-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiprofitflow.ru/blog/avtomatizatsiya-biznesa-s-pomoshchyu-ii-v-2026-godu-s-chego-nachat-i-chego.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

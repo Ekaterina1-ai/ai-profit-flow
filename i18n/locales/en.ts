@@ -96,6 +96,7 @@ const messages = {
     hide: 'Collapse',
     minutes: 'min',
     empty: 'New materials will appear here soon',
+    all: 'All articles',
   },
 
   experts: {

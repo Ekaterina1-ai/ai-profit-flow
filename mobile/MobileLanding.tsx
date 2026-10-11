@@ -35,9 +35,9 @@ import {
 import { useI18n } from '../i18n';
 import LanguageSwitcher from '../i18n/LanguageSwitcher';
 import { assetUrl } from '../assetUrl';
-import { publishedArticles } from '../content/articles';
 import { sendLead } from '../formApi';
 import { notify } from '../Notify';
+import { useBlogPosts } from '../useBlogPosts';
 import './mobile.css';
 
 const SOCIAL = [
@@ -211,13 +211,11 @@ type Expert = {
 };
 
 type Article = {
-  id: number;
-  category: string;
+  id: string;
   title: string;
   excerpt: string;
-  readTime: string;
   date: string;
-  body: string;
+  url: string;
   icon: React.ReactNode;
 };
 
@@ -276,18 +274,22 @@ const MobileLanding: React.FC = () => {
       })),
     [t],
   );
+  const blogPosts = useBlogPosts();
   const articles = useMemo<Article[]>(
     () =>
-      publishedArticles.map((item, idx) => ({
-        ...item,
+      blogPosts.map((item, idx) => ({
+        id: item.slug,
+        title: item.title,
+        excerpt: item.description,
+        date: item.date,
+        url: item.url,
         icon: ARTICLE_ICONS[idx % ARTICLE_ICONS.length],
       })),
-    [],
+    [blogPosts],
   );
   const [menuOpen, setMenuOpen] = useState(false);
   const [showAllServices, setShowAllServices] = useState(false);
   const [expandedCase, setExpandedCase] = useState<number | null>(null);
-  const [expandedArticle, setExpandedArticle] = useState<number | null>(null);
   const [serviceId, setServiceId] = useState<number | null>(null);
   const [expertId, setExpertId] = useState<number | null>(null);
   const [faqOpen, setFaqOpen] = useState(false);
@@ -841,67 +843,39 @@ const MobileLanding: React.FC = () => {
         </div>
       </section>
 
-      {/* Articles */}
+      {/* Articles — из /blog/posts.json (SEO Agent) */}
       <section id="m-articles" className="m-section">
         <h2 className="m-section-title">{t.articles.title}</h2>
         <p className="m-section-sub">{t.articles.subtitle}</p>
         <div className="m-rule" />
         {articles.length > 0 ? (
-          articles.map((item) => {
-            const open = expandedArticle === item.id;
-            return (
-              <article key={item.id} className={`m-article${open ? ' is-open' : ''}`}>
-                <button
-                  type="button"
-                  className="m-article-head"
-                  aria-expanded={open}
-                  onClick={() => setExpandedArticle(open ? null : item.id)}
-                >
+          <>
+            {articles.map((item) => (
+              <article key={item.id} className="m-article">
+                <a href={item.url} className="m-article-head" style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div className="m-article-icon">{item.icon}</div>
                   <div className="m-article-meta">
-                    <span className="m-article-cat">{item.category}</span>
+                    <span className="m-article-cat">{t.nav.articles}</span>
                     <h3>{item.title}</h3>
                     <p className="m-article-excerpt">{item.excerpt}</p>
                     <div className="m-article-stats">
-                      <span>
-                        <Clock size={12} /> {item.readTime} {t.articles.minutes}
-                      </span>
                       <span>{item.date}</span>
                     </div>
                   </div>
-                  <ChevronDown
-                    size={18}
-                    color="#67e8f9"
-                    className="m-article-chevron"
-                    style={{ transform: open ? 'rotate(180deg)' : undefined }}
-                  />
-                </button>
-                {open && (
-                  <div className="m-article-body">
-                    <div className="m-article-body-text">{item.body}</div>
-                    <button
-                      type="button"
-                      className="m-article-collapse"
-                      onClick={() => setExpandedArticle(null)}
-                    >
-                      {t.articles.hide}
-                    </button>
-                  </div>
-                )}
-                {!open && (
-                  <button
-                    type="button"
-                    className="m-article-read"
-                    onClick={() => setExpandedArticle(item.id)}
-                  >
-                    <BookOpen size={14} />
-                    {t.articles.read}
-                    <ArrowRight size={14} />
-                  </button>
-                )}
+                  <ArrowRight size={18} color="#67e8f9" className="m-article-chevron" />
+                </a>
+                <a href={item.url} className="m-article-read">
+                  <BookOpen size={14} />
+                  {t.articles.read}
+                  <ArrowRight size={14} />
+                </a>
               </article>
-            );
-          })
+            ))}
+            <a href="/blog/" className="m-article-read" style={{ marginTop: 12, justify: 'inline-flex' }}>
+              {t.articles.all}
+              <ArrowRight size={14} />
+            </a>
+          </>
         ) : (
           <p className="m-articles-empty">{t.articles.empty}</p>
         )}
@@ -932,6 +906,10 @@ const MobileLanding: React.FC = () => {
           <br />
           {t.footer.inn}
           <br />{t.footer.rights}
+          <br />
+          <a href="/blog/" style={{ color: '#67e8f9', display: 'inline' }}>
+            {t.nav.articles}
+          </a>
           <br />
           <a href="/doc/privacy.pdf" target="_blank" rel="noreferrer" style={{ color: '#475569', display: 'inline' }}>
             {t.footer.privacy}

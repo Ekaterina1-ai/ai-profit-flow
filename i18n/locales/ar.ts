@@ -96,6 +96,7 @@ const messages = {
     hide: 'طي',
     minutes: 'د',
     empty: 'ستظهر هنا مواد جديدة قريباً',
+    all: 'كل المقالات',
   },
 
   experts: {
